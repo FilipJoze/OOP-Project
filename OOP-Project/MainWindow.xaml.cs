@@ -24,5 +24,21 @@ namespace OOP_Project
         {
             InitializeComponent();
         }
+
+        private void btnUser_Click(object sender, RoutedEventArgs e)
+        {
+            UserLogin ul = new UserLogin();
+            ul.Owner = this;
+            this.Hide();
+            ul.ShowDialog();
+        }
+
+        private void btnAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            AdminLogin al = new AdminLogin();
+            al.Owner = this;
+            this.Hide();
+            al.ShowDialog();
+        }
     }
 }

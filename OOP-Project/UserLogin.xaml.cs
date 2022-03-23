@@ -23,5 +23,13 @@ namespace OOP_Project
         {
             InitializeComponent();
         }
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            ActionMenu am = new ActionMenu();
+            am.Owner = this;
+            this.Hide();
+            am.ShowDialog();
+        }
     }
 }

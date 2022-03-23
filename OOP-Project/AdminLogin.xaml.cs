@@ -15,19 +15,13 @@ using System.Windows.Shapes;
 namespace OOP_Project
 {
     /// <summary>
-    /// Interaction logic for ActionMenu.xaml
+    /// Interaction logic for AdminLogin.xaml
     /// </summary>
-    public partial class ActionMenu : Window
+    public partial class AdminLogin : Window
     {
-        public ActionMenu()
+        public AdminLogin()
         {
             InitializeComponent();
-        }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            MenuItem mi = new MenuItem();
-            mi.ContextMenu.IsOpen = true;
         }
     }
 }
