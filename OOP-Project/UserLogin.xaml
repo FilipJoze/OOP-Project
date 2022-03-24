@@ -11,8 +11,8 @@
         <TextBox x:Name="txtUsername_Copy" HorizontalAlignment="Left" Height="54" Margin="30,311,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="251" FontSize="36"/>
         <Label x:Name="lblUsername" Content="Username" HorizontalAlignment="Left" Margin="30,158,0,0" VerticalAlignment="Top" FontSize="24"/>
         <Label x:Name="lblPassword" Content="Password" HorizontalAlignment="Left" Margin="30,264,0,0" VerticalAlignment="Top" FontSize="24"/>
-        <Label x:Name="lblCreateAccount" Content="Dont have an account?" HorizontalAlignment="Left" Margin="86,370,0,0" VerticalAlignment="Top"/>
         <Image Margin="74,0,89,367.8" Source="Image1.png" Stretch="Fill"/>
         <Button x:Name="btnLogin" Content="Login" HorizontalAlignment="Left" Margin="36,401,0,0" VerticalAlignment="Top" Width="245" Height="85" FontSize="36" Click="btnLogin_Click"/>
+        <Button x:Name="btnCreateAccount" Content="Don't have an account?" HorizontalAlignment="Left" Margin="74,370,0,0" VerticalAlignment="Top" Width="158" Background="#00DDDDDD" BorderBrush="#00707070" Foreground="#FF0071FF" FontWeight="Bold" FontStyle="Italic" Click="btnCreateAccount_Click"/>
     </Grid>
 </Window>

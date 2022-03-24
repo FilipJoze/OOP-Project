@@ -31,5 +31,13 @@ namespace OOP_Project
             this.Hide();
             am.ShowDialog();
         }
+
+        private void btnCreateAccount_Click(object sender, RoutedEventArgs e)
+        {
+            CreateAccount ca = new CreateAccount();
+            ca.Owner = this;
+            this.Hide();
+            ca.ShowDialog();
+        }
     }
 }
