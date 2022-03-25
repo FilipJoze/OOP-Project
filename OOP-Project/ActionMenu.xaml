@@ -10,19 +10,27 @@
         <StackPanel x:Name="ActionStackPanel" HorizontalAlignment="Left" Height="40" Margin="0,0,-0.4,0" VerticalAlignment="Top" Width="794" Background="#FF00D6FF" OpacityMask="#FF00FAFF">
             <Menu x:Name="ActionMenu1" Height="40" Margin="0,0,-0.4,0" OpacityMask="#7F000000">
 
-                <MenuItem Header="Account" Height="40" Width="90" Background="#FF00C4EA">
+                <MenuItem Header="Accounts" Height="40" Width="90" Background="#FF00C4EA">
+                    <Image Source="Icons/user.jpg"></Image>
                     <Button x:Name="btnEditAccount" Content="Edit Account" Height="25" Width="auto" Click="SettingsButton_Click"/>
+                    <Button x:Name="btnAddAccount" Content="Add Account" Height="25" Width="auto" Click="SettingsButton_Click">
+                       
+                    </Button>
                     <Button x:Name="btnTransferFunds" Content="Transfer Funds" Height="25" Width="auto" Click="SettingsButton_Click"/>
                 </MenuItem>
                 <MenuItem Header="Settings" Height="40" Width="90" Background="#FF00C4EA">
                     <Button x:Name="btnSettings" Content="Settings" Height="25" Width="auto" Click="SettingsButton_Click"/>
                     <Button x:Name="btnHelp" Content="Help" Height="25" Width="auto" Click="SettingsButton_Click"/>
                 </MenuItem>
-                
+
 
             </Menu>
 
         </StackPanel>
+        <DataGrid HorizontalAlignment="Left" Height="365" Margin="10,45,0,0" VerticalAlignment="Top" Width="676"/>
+        <Button Content="Sort by Largest" HorizontalAlignment="Left" Margin="691,45,0,0" VerticalAlignment="Top" Width="93" Height="40"/>
+        <Button Content="Sort by Smallest" HorizontalAlignment="Left" Margin="691,90,0,0" VerticalAlignment="Top" Width="93" Height="40"/>
+        <Button Content="idk" HorizontalAlignment="Left" Margin="691,135,0,0" VerticalAlignment="Top" Width="93" Height="40"/>
 
     </Grid>
 </Window>
