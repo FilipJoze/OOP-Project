@@ -9,20 +9,19 @@
     <Grid>
         <StackPanel x:Name="ActionStackPanel" HorizontalAlignment="Left" Height="40" Margin="0,0,-0.4,0" VerticalAlignment="Top" Width="794" Background="#FF00D6FF" OpacityMask="#FF00FAFF">
             <Menu x:Name="ActionMenu1" Height="40" Margin="0,0,-0.4,0" OpacityMask="#7F000000">
+
                 <MenuItem Header="Account" Height="40" Width="90" Background="#FF00C4EA">
-                    <MenuItem.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Header="Transfer Funds"/>
-                            <MenuItem Header="filler 1"/>
-                            <MenuItem Header="filler 2"/>
-                            <MenuItem Header="filler 3"/>
-                        </ContextMenu>
-                    </MenuItem.ContextMenu>
-                    
+                    <Button x:Name="btnEditAccount" Content="Edit Account" Height="25" Width="auto" Click="SettingsButton_Click"/>
+                    <Button x:Name="btnTransferFunds" Content="Transfer Funds" Height="25" Width="auto" Click="SettingsButton_Click"/>
                 </MenuItem>
-                <Button x:Name="SettingsButton" Content="Settings" Height="40" Background="#FF00C4EA" Width="90"/>
+                <MenuItem Header="Settings" Height="40" Width="90" Background="#FF00C4EA">
+                    <Button x:Name="btnSettings" Content="Settings" Height="25" Width="auto" Click="SettingsButton_Click"/>
+                    <Button x:Name="btnHelp" Content="Help" Height="25" Width="auto" Click="SettingsButton_Click"/>
+                </MenuItem>
+                
+
             </Menu>
-            
+
         </StackPanel>
 
     </Grid>

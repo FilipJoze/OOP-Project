@@ -29,5 +29,10 @@ namespace OOP_Project
             MenuItem mi = new MenuItem();
             mi.ContextMenu.IsOpen = true;
         }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
