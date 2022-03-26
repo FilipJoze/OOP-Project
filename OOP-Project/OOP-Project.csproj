@@ -125,7 +125,9 @@
   <ItemGroup>
     <Resource Include="Image1.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Icons\euro_icon.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\user.jpg" />
     <Resource Include="Icons\user_add.jpg" />

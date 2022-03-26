@@ -19,9 +19,16 @@ namespace OOP_Project
     /// </summary>
     public partial class CreateAccount : Window
     {
+       
         public CreateAccount()
         {
+            //cmbCounty.DataSource = Enum.GetNames(typeof(Counties));
             InitializeComponent();
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
