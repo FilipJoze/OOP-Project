@@ -23,6 +23,7 @@ namespace OOP_Project
         public CreateAccount()
         {
             //cmbCounty.DataSource = Enum.GetNames(typeof(Counties));
+            //test
             InitializeComponent();
         }
 
