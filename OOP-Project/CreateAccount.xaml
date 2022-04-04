@@ -12,37 +12,37 @@
             <TextBox x:Name="txtBalance" HorizontalAlignment="Left" Height="38" Margin="-175,70,0,0" TextWrapping="Wrap" Text="€0.0" VerticalAlignment="Top" Width="155" FontSize="24"/>
             <Label Content="Initial Balance" HorizontalAlignment="Left" Margin="-175,20,0,0" VerticalAlignment="Top" FontSize="24"/>
         </DockPanel>
-        <DockPanel Margin="333,10,25.4,71.2">
-            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="325" Margin="0,0,0,0" Stroke="#FF00C4EA" VerticalAlignment="Top" Width="200"/>
-            <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="38" Margin="-175,70,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="155" FontSize="24"/>
+        <DockPanel Margin="333,10,25.4,281.8">
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="283" Margin="0,0,0,0" Stroke="#FF00C4EA" VerticalAlignment="Top" Width="200"/>
+            <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="38" Margin="-170,70,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="148" FontSize="24"/>
             <Label Content="Username" HorizontalAlignment="Left" Margin="-175,20,0,0" VerticalAlignment="Top" FontSize="20"/>
             <Label Content="Password" HorizontalAlignment="Left" Margin="-175,120,0,0" VerticalAlignment="Top" FontSize="20"/>
             <PasswordBox Height="35" VerticalAlignment="Top" Width="149" Margin="-190,150,0,0"/>
-            <Label Content="Confirm Password" HorizontalAlignment="Left" Margin="-175,220,0,0" VerticalAlignment="Top" FontSize="20"/>
-            <PasswordBox Height="35" VerticalAlignment="Top" Width="149" Margin="-190,250,0,0"/>
+            <Label Content="Confirm Password" HorizontalAlignment="Left" Margin="-175,200,0,0" VerticalAlignment="Top" FontSize="20"/>
+            <PasswordBox Height="35" VerticalAlignment="Top" Width="149" Margin="-190,230,0,0"/>
         </DockPanel>
-        <DockPanel>
-            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="558" Margin="10,10,0,0" Stroke="#FF00C4EA" VerticalAlignment="Top" Width="300"/>
+        <DockPanel Margin="0,0,254.4,-0.2">
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="485" Margin="10,10,0,0" Stroke="#FF00C4EA" VerticalAlignment="Top" Width="293"/>
+            <Label Content="First Name" HorizontalAlignment="Left" Margin="-290,10,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <Label Content="Surname" HorizontalAlignment="Left" Margin="-290,67,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <Label Content="Email" HorizontalAlignment="Left" Margin="-290,124,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Height="25" Margin="-290,42,0,0" TextWrapping="Wrap" Text="John...." VerticalAlignment="Top" Width="155" FontSize="16"/>
+            <TextBox x:Name="txtSurname" HorizontalAlignment="Left" Height="25" Margin="-290,99,0,0" TextWrapping="Wrap" Text="Smith..." VerticalAlignment="Top" Width="155" FontSize="16"/>
+            <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="25" Margin="-290,156,0,0" TextWrapping="Wrap" Text="jsmith@gmail.com..." VerticalAlignment="Top" Width="274" FontSize="16"/>
+            <Label Content="Phone" HorizontalAlignment="Left" Margin="-290,181,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <TextBox x:Name="txtPhone" HorizontalAlignment="Left" Height="25" Margin="-290,213,0,0" TextWrapping="Wrap" Text="083 485 4562..." VerticalAlignment="Top" Width="155" FontSize="16"/>
+            <Label Content="Address Line 1" HorizontalAlignment="Left" Margin="-290,238,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <Label Content="Address Line 2" HorizontalAlignment="Left" Margin="-290,295,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <Label Content="City" HorizontalAlignment="Left" Margin="-290,352,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <TextBox x:Name="txtEmail_Copy1" HorizontalAlignment="Left" Height="25" Margin="-290,270,0,0" TextWrapping="Wrap" Text="123 Gold Street..." VerticalAlignment="Top" Width="155" FontSize="16"/>
+            <TextBox x:Name="txtEmail_Copy" HorizontalAlignment="Left" Height="25" Margin="-290,327,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="155" FontSize="16"/>
+            <TextBox x:Name="txtEmail_Copy2" HorizontalAlignment="Left" Height="25" Margin="-290,384,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="114" FontSize="16"/>
+            <ComboBox x:Name="cmbCounty" HorizontalAlignment="Left" Margin="-290,441,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
+            <Label Content="County" HorizontalAlignment="Left" Margin="-290,409,0,0" VerticalAlignment="Top" FontSize="16"/>
 
         </DockPanel>
-        <Button x:Name="btnCreate" Content="Create Account" HorizontalAlignment="Left" Margin="333,518,0,0" VerticalAlignment="Top" Width="198" Height="50" FontSize="24" Cursor="Hand" Background="#FF00C4EA" BorderBrush="Black" Click="btnCreate_Click"/>
+        <Button x:Name="btnCreate" Content="Create Account" HorizontalAlignment="Left" Margin="335,525,0,0" VerticalAlignment="Top" Width="198" Height="50" FontSize="24" Cursor="Hand" Background="#FF00C4EA" BorderBrush="Black" Click="btnCreate_Click"/>
 
-        <Label Content="First Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <Label Content="Surname" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <Label Content="Email" HorizontalAlignment="Left" Margin="10,124,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Height="25" Margin="10,42,0,0" TextWrapping="Wrap" Text="John...." VerticalAlignment="Top" Width="155" FontSize="16"/>
-        <TextBox x:Name="txtSurname" HorizontalAlignment="Left" Height="25" Margin="10,99,0,0" TextWrapping="Wrap" Text="Smith..." VerticalAlignment="Top" Width="155" FontSize="16"/>
-        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="25" Margin="10,156,0,0" TextWrapping="Wrap" Text="jsmith@gmail.com..." VerticalAlignment="Top" Width="274" FontSize="16"/>
-        <Label Content="Phone" HorizontalAlignment="Left" Margin="10,181,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <TextBox x:Name="txtPhone" HorizontalAlignment="Left" Height="25" Margin="10,213,0,0" TextWrapping="Wrap" Text="083 485 4562..." VerticalAlignment="Top" Width="155" FontSize="16"/>
-        <Label Content="Address Line 1" HorizontalAlignment="Left" Margin="10,238,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <Label Content="Address Line 2" HorizontalAlignment="Left" Margin="10,295,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <Label Content="City" HorizontalAlignment="Left" Margin="10,352,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <TextBox x:Name="txtEmail_Copy1" HorizontalAlignment="Left" Height="25" Margin="10,270,0,0" TextWrapping="Wrap" Text="123 Gold Street..." VerticalAlignment="Top" Width="155" FontSize="16"/>
-        <TextBox x:Name="txtEmail_Copy" HorizontalAlignment="Left" Height="25" Margin="10,327,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="155" FontSize="16"/>
-        <TextBox x:Name="txtEmail_Copy2" HorizontalAlignment="Left" Height="25" Margin="10,384,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="114" FontSize="16"/>
-        <ComboBox x:Name="cmbCounty" HorizontalAlignment="Left" Margin="10,441,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
-        <Label Content="County" HorizontalAlignment="Left" Margin="10,409,0,0" VerticalAlignment="Top" FontSize="16"/>
-
+        
     </Grid>
 </Window>
