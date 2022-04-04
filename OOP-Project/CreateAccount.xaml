@@ -5,14 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OOP_Project"
         mc:Ignorable="d"
-        Title="CreateAccount" Height="520.8" Width="565">
+        Title="CreateAccount" Height="614.4" Width="565">
     <Grid>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="468" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="300"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="150" Margin="350,173,0,0" Stroke="Black" VerticalAlignment="Top" Width="200"/>
-        <Button x:Name="btnCreate" Content="Create Account" HorizontalAlignment="Left" Margin="350,360,0,0" VerticalAlignment="Top" Width="198" Height="50" FontSize="24"/>
-        <Label Content="Initial Balance" HorizontalAlignment="Left" Margin="376,186,0,0" VerticalAlignment="Top" FontSize="24"/>
-        <Image HorizontalAlignment="Left" Height="145" Margin="350,0,0,336.2" VerticalAlignment="Bottom" Width="149" Source="Icons/euro_icon.jpg"/>
-        <TextBox x:Name="txtBalance" HorizontalAlignment="Left" Height="38" Margin="376,250,0,0" TextWrapping="Wrap" Text="€0.0" VerticalAlignment="Top" Width="155" FontSize="24"/>
+        <DockPanel Margin="333,352,25.4,-18.8">
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="150" Margin="0,0,0,0" Stroke="#FF00C4EA" VerticalAlignment="Top" Width="200"/>
+            <TextBox x:Name="txtBalance" HorizontalAlignment="Left" Height="38" Margin="-175,70,0,0" TextWrapping="Wrap" Text="€0.0" VerticalAlignment="Top" Width="155" FontSize="24"/>
+            <Label Content="Initial Balance" HorizontalAlignment="Left" Margin="-175,20,0,0" VerticalAlignment="Top" FontSize="24"/>
+        </DockPanel>
+        <DockPanel Margin="333,10,25.4,71.2">
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="325" Margin="0,0,0,0" Stroke="#FF00C4EA" VerticalAlignment="Top" Width="200"/>
+            <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="38" Margin="-175,70,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="155" FontSize="24"/>
+            <Label Content="Username" HorizontalAlignment="Left" Margin="-175,20,0,0" VerticalAlignment="Top" FontSize="20"/>
+            <Label Content="Password" HorizontalAlignment="Left" Margin="-175,120,0,0" VerticalAlignment="Top" FontSize="20"/>
+            <PasswordBox Height="35" VerticalAlignment="Top" Width="149" Margin="-190,150,0,0"/>
+            <Label Content="Confirm Password" HorizontalAlignment="Left" Margin="-175,220,0,0" VerticalAlignment="Top" FontSize="20"/>
+            <PasswordBox Height="35" VerticalAlignment="Top" Width="149" Margin="-190,250,0,0"/>
+        </DockPanel>
+        <DockPanel>
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="558" Margin="10,10,0,0" Stroke="#FF00C4EA" VerticalAlignment="Top" Width="300"/>
+
+        </DockPanel>
+        <Button x:Name="btnCreate" Content="Create Account" HorizontalAlignment="Left" Margin="333,518,0,0" VerticalAlignment="Top" Width="198" Height="50" FontSize="24" Cursor="Hand" Background="#FF00C4EA" BorderBrush="Black" Click="btnCreate_Click"/>
+
         <Label Content="First Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="16"/>
         <Label Content="Surname" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" FontSize="16"/>
         <Label Content="Email" HorizontalAlignment="Left" Margin="10,124,0,0" VerticalAlignment="Top" FontSize="16"/>

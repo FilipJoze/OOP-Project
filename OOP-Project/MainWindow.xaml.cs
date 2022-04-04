@@ -10,35 +10,76 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BIZ;
+using DAL;
+using System.Data.SqlClient;
 
 namespace OOP_Project
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for UserLogin.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UserLogin : Window
     {
-        public MainWindow()
+        public UserLogin()
         {
             InitializeComponent();
         }
 
-        private void btnUser_Click(object sender, RoutedEventArgs e)
+        DAO dao = new DAO();
+        HashPass hp = new HashPass();
+        SqlDataReader dr;
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            UserLogin ul = new UserLogin();
-            ul.Owner = this;
+            ActionMenu am = new ActionMenu();
+            am.Owner = this;
             this.Hide();
-            ul.ShowDialog();
+            am.ShowDialog();
+
+            //string bankuser = txtUsername.Text;
+            //string bankpass = hp.PassHash(pbPassword.Password.ToString()); // encryption
+
+            //SqlCommand cmd = dao.OpenCon().CreateCommand();
+            //cmd.CommandText = "uspUserLogin";
+            //cmd.CommandType = CommandType.StoredProcedure;
+
+            //cmd.Parameters.AddWithValue("@username", bankuser);
+            //cmd.Parameters.AddWithValue("@staffpass", bankpass);
+
+            //dao.OpenCon();
+            //dr = cmd.ExecuteReader();
+            //if (dr.Read())
+            //{
+            //    Menu mainmenu = new Menu();
+            //    mainmenu.Show();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Incorrect Details", "Login Error", MessageBoxButton.OK);
+
+            //}
+            //dao.CloseCon();
+
         }
 
-        private void btnAdmin_Click(object sender, RoutedEventArgs e)
+        private void btnCreateAccount_Click(object sender, RoutedEventArgs e)
         {
-            AdminLogin al = new AdminLogin();
-            al.Owner = this;
+            CreateAccount ca = new CreateAccount();
+            ca.Owner = this;
             this.Hide();
-            al.ShowDialog();
+            ca.ShowDialog();
+        }
+
+        private void txtUsername_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

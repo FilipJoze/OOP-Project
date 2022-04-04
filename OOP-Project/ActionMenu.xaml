@@ -7,30 +7,53 @@
         mc:Ignorable="d"
         Title="ActionMenu" Height="450" Width="800">
     <Grid>
-        <StackPanel x:Name="ActionStackPanel" HorizontalAlignment="Left" Height="40" Margin="0,0,-0.4,0" VerticalAlignment="Top" Width="794" Background="#FF00D6FF" OpacityMask="#FF00FAFF">
+        <StackPanel x:Name="ActionStackPanel" HorizontalAlignment="Left" Height="40" Margin="0,0,-0.4,0" VerticalAlignment="Top" FlowDirection="LeftToRight" Width="794" Background="#FF00D6FF" OpacityMask="#FF00FAFF">
             <Menu x:Name="ActionMenu1" Height="40" Margin="0,0,-0.4,0" OpacityMask="#7F000000">
 
-                <MenuItem Header="Accounts" Height="40" Width="90" Background="#FF00C4EA">
-                    <Image Source="Icons/user.jpg"></Image>
-                    <Button x:Name="btnEditAccount" Content="Edit Account" Height="25" Width="auto" Click="SettingsButton_Click"/>
-                    <Button x:Name="btnAddAccount" Content="Add Account" Height="25" Width="auto" Click="SettingsButton_Click">
-                       
-                    </Button>
-                    <Button x:Name="btnTransferFunds" Content="Transfer Funds" Height="25" Width="auto" Click="SettingsButton_Click"/>
+                <MenuItem Header="Accounts" Height="40" Width="90" Background="#FF00C4EA" Cursor="Hand" BorderBrush="#00000000"  Foreground="Black">
+                    <StackPanel Width="190" Height="30">
+                        <Button x:Name="btnAddAccount" Content="Add Account" Height="20" Width="78" Click="SettingsButton_Click"  Cursor="Hand" Background="#00DDDDDD" BorderBrush="#00707070"/>
+                    </StackPanel>
+                    <StackPanel Height="21" Width="157">
+                        <Button x:Name="btnEditAccount" Content="Edit Account" Height="30" Width="auto" Click="SettingsButton_Click" Cursor="Hand"  Background="#00DDDDDD" BorderBrush="#00707070"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <Button x:Name="btnLogOut" Content="Log Out" Height="25" Width="auto" Click="SettingsButton_Click" Cursor="Hand" Background="#00DDDDDD" BorderBrush="#00707070"/>
+                    </StackPanel>
                 </MenuItem>
-                <MenuItem Header="Settings" Height="40" Width="90" Background="#FF00C4EA">
-                    <Button x:Name="btnSettings" Content="Settings" Height="25" Width="auto" Click="SettingsButton_Click"/>
-                    <Button x:Name="btnHelp" Content="Help" Height="25" Width="auto" Click="SettingsButton_Click"/>
+                
+                <MenuItem Header="Services" Height="40" Width="90" Background="#FF00C4EA" Cursor="Hand" BorderBrush="#00000000" Foreground="Black">
+                    <StackPanel>
+                        <Button x:Name="btnTransferFunds" Content="Transfer Funds" Height="25" Width="auto" Click="SettingsButton_Click" Cursor="Hand" Background="#00DDDDDD" BorderBrush="#00707070"/>
+
+                    </StackPanel>
+                    <StackPanel>
+                        <Button x:Name="btnWithdrawFunds" Content="Withdraw Funds" Height="25" Width="auto" Click="SettingsButton_Click" Cursor="Hand" Background="#00DDDDDD" BorderBrush="#00707070"/>
+
+                    </StackPanel>
+                    <StackPanel>
+                        <Button x:Name="btnDepositFunds" Content="Deposit Funds" Height="25" Width="auto" Click="SettingsButton_Click" Cursor="Hand" Background="#00DDDDDD" BorderBrush="#00707070"/>
+
+                    </StackPanel>
+                    <StackPanel>
+                        <Button x:Name="btnViewTransactionHistory" Content="Transaction History" Height="25" Width="auto" Click="SettingsButton_Click" Cursor="Hand" Background="#00DDDDDD" BorderBrush="#00707070"/>
+
+                    </StackPanel>
                 </MenuItem>
-
-
+                
+                <MenuItem Header="Settings" Height="40" Width="90" Background="#FF00C4EA" Click="MenuItem_Click_1" Cursor="Hand" BorderBrush="#00000000" Foreground="Black">
+                    <Button x:Name="btnSettings" Content="Settings" Height="25" Width="auto" Click="SettingsButton_Click" Background="#00DDDDDD" BorderBrush="#00707070"/>
+                    <Button x:Name="btnHelp" Content="Help" Height="25" Width="auto" Click="SettingsButton_Click" Background="#00DDDDDD" BorderBrush="#00707070"/>
+                </MenuItem>
             </Menu>
 
         </StackPanel>
-        <DataGrid HorizontalAlignment="Left" Height="365" Margin="10,45,0,0" VerticalAlignment="Top" Width="676"/>
-        <Button Content="Sort by Largest" HorizontalAlignment="Left" Margin="691,45,0,0" VerticalAlignment="Top" Width="93" Height="40"/>
-        <Button Content="Sort by Smallest" HorizontalAlignment="Left" Margin="691,90,0,0" VerticalAlignment="Top" Width="93" Height="40"/>
-        <Button Content="idk" HorizontalAlignment="Left" Margin="691,135,0,0" VerticalAlignment="Top" Width="93" Height="40"/>
+        <DataGrid HorizontalAlignment="Left" Height="365" Margin="10,45,0,0" VerticalAlignment="Top" Width="676" Foreground="Black" BorderBrush="#FF00C4EA"/>
+        <StackPanel>
+            <Button Content="Sort by Largest" HorizontalAlignment="Left" Margin="691,45,0,0" VerticalAlignment="Top" Width="93" Height="40" Cursor="Hand" Background="#FF00C4EA" Foreground="Black"/>
+            <Button Content="Sort by Smallest" HorizontalAlignment="Left" Margin="691,10,0,0" VerticalAlignment="Top" Width="93" Height="40" Cursor="Hand" Background="#FF00C4EA"/>
+            <Button Content="idk" HorizontalAlignment="Left" Margin="691,10,0,0" VerticalAlignment="Top" Width="93" Height="40" Cursor="Hand" Background="#FF00C4EA"/>
+        </StackPanel>
 
     </Grid>
 </Window>
