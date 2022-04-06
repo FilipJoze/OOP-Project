@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateAccount.cs" />
+    <Compile Include="CreateUser.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="HashPass.cs" />

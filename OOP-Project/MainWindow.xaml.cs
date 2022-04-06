@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BIZ;
 using DAL;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace OOP_Project
@@ -27,41 +28,56 @@ namespace OOP_Project
             InitializeComponent();
         }
 
-        DAO dao = new DAO();
+        //DAO dao = new DAO();
         HashPass hp = new HashPass();
-        SqlDataReader dr;
+        Random r = new Random();
+        LoginCheck lc = new LoginCheck();
+        //SqlDataReader dr;
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            int captchaCode = r.Next(100000, 999999);
+            txtCaptcha.Text = captchaCode.ToString();
+
+        }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            ActionMenu am = new ActionMenu();
-            am.Owner = this;
-            am.Show();
-            this.Hide();
-         
 
-            //string bankuser = txtUsername.Text;
-            //string bankpass = hp.PassHash(pbPassword.Password.ToString()); // encryption
+            if (txtCaptchaCheck.Text == txtCaptcha.Text)
+            {
+                string user = txtUsername.Text;
+                //string pass = hp.PassHash(pbPassword.Password.ToString()); //encryption
+                string pass = pbPassword.Password.ToString();
 
-            //SqlCommand cmd = dao.OpenCon().CreateCommand();
-            //cmd.CommandText = "uspUserLogin";
-            //cmd.CommandType = CommandType.StoredProcedure;
 
-            //cmd.Parameters.AddWithValue("@username", bankuser);
-            //cmd.Parameters.AddWithValue("@staffpass", bankpass);
+                bool readSuccess = lc.CheckUserLogin(user, pass);
 
-            //dao.OpenCon();
-            //dr = cmd.ExecuteReader();
-            //if (dr.Read())
-            //{
-            //    Menu mainmenu = new Menu();
-            //    mainmenu.Show();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Incorrect Details", "Login Error", MessageBoxButton.OK);
-
-            //}
-            //dao.CloseCon();
+                if (readSuccess)
+                {
+                    ActionMenu am = new ActionMenu();
+                    am.Owner = this;
+                    am.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect Details", "Login Error", MessageBoxButton.OK);
+                    pbPassword.Clear();
+                    txtCaptcha.Clear();
+                    txtCaptchaCheck.Clear();
+                    int captchaCode = r.Next(100000, 999999);
+                    txtCaptcha.Text = captchaCode.ToString();
+                }
+            }else
+            {
+                MessageBox.Show("Incorrect Details", "Login Error", MessageBoxButton.OK);
+                pbPassword.Clear();
+                txtCaptcha.Clear();
+                txtCaptchaCheck.Clear();
+                int captchaCode = r.Next(100000, 999999);
+                txtCaptcha.Text = captchaCode.ToString();
+            }
 
         }
 
@@ -83,5 +99,7 @@ namespace OOP_Project
         {
 
         }
+
+
     }
 }

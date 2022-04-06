@@ -6,13 +6,16 @@
         xmlns:local="clr-namespace:OOP_Project"
         mc:Ignorable="d"
         Title="UserLogin" Height="550" Width="350">
-    <Grid>
-        <Label x:Name="lblUsername" Content="Username" HorizontalAlignment="Left" Margin="30,158,0,0" VerticalAlignment="Top" FontSize="24"/>
-        <Label x:Name="lblPassword" Content="Password" HorizontalAlignment="Left" Margin="30,264,0,0" VerticalAlignment="Top" FontSize="24"/>
-        <Image Margin="74,0,89,367.8" Source="Icons/card_icon1.png" Stretch="Fill"/>
+    <Grid Loaded="Grid_Loaded">
+        <Label x:Name="lblUsername" Content="Username" HorizontalAlignment="Left" Margin="30,111,0,0" VerticalAlignment="Top" FontSize="24"/>
+        <Label x:Name="lblPassword" Content="Password" HorizontalAlignment="Left" Margin="30,203,0,0" VerticalAlignment="Top" FontSize="24"/>
+        <Image Margin="108,0,114,414.8" Source="Icons/card_icon1.png" Stretch="Fill"/>
         <Button x:Name="btnLogin" Content="Login" HorizontalAlignment="Left" Margin="36,401,0,0" VerticalAlignment="Top" Width="245" Height="85" FontSize="36" Click="btnLogin_Click" Cursor="Hand" Background="#FF00C4EA" Foreground="Black"/>
         <Button x:Name="btnCreateAccount" Content="Don't have an account? Create one" HorizontalAlignment="Left" Margin="48,377,0,0" VerticalAlignment="Top" Width="207" Background="#00DDDDDD" BorderBrush="#00707070" Foreground="#FF0071FF" FontWeight="Bold" FontStyle="Italic" Click="btnCreateAccount_Click" Cursor="Hand"/>
-        <PasswordBox x:Name="pbPassword" HorizontalAlignment="Left" Margin="36,306,0,0" VerticalAlignment="Top" Height="45" Width="245" FontSize="36" BorderBrush="#FF00C4EA"/>
-        <TextBox HorizontalAlignment="Left" Height="45" Margin="36,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" FontSize="36" TextChanged="TextBox_TextChanged" BorderBrush="#FF00C4EA"/>
+        <PasswordBox x:Name="pbPassword" HorizontalAlignment="Left" Margin="36,245,0,0" VerticalAlignment="Top" Height="45" Width="245" FontSize="36" BorderBrush="#FF00C4EA"/>
+        <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="45" Margin="36,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" FontSize="36" TextChanged="TextBox_TextChanged" BorderBrush="#FF00C4EA"/>
+        <TextBox x:Name="txtCaptcha" HorizontalAlignment="Left" Height="33" Margin="83,309,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147" IsReadOnly="True" TextAlignment="Center" FontSize="24"/>
+        <TextBox x:Name="txtCaptchaCheck" HorizontalAlignment="Left" Height="33" Margin="83,342,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147" TextAlignment="Center" FontSize="24"/>
+        <Label Content="Captcha Code" HorizontalAlignment="Left" Margin="108,283,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
