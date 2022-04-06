@@ -5,8 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OOP_Project"
         mc:Ignorable="d"
-        Title="EditAccount" Height="450" Width="800">
+        Title="EditAccount" Height="611.47" Width="318.235">
     <Grid>
-        
+
+
+        <DockPanel Margin="10,10,0,-0">
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="485" Margin="0,0,0,0" Stroke="#FF00C4EA" VerticalAlignment="Top" Width="293"/>
+            <Label Content="First Name" HorizontalAlignment="Left" Margin="-290,10,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <Label Content="Surname" HorizontalAlignment="Left" Margin="-290,67,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <Label Content="Email" HorizontalAlignment="Left" Margin="-290,124,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Height="25" Margin="-290,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" FontSize="16" IsReadOnly="True"/>
+            <TextBox x:Name="txtSurname" HorizontalAlignment="Left" Height="25" Margin="-290,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" FontSize="16" IsReadOnly="True"/>
+            <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="25" Margin="-290,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="274" FontSize="16"/>
+            <Label Content="Phone" HorizontalAlignment="Left" Margin="-290,181,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <TextBox x:Name="txtPhone" HorizontalAlignment="Left" Height="25" Margin="-290,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" FontSize="16"/>
+            <Label Content="Address Line 1" HorizontalAlignment="Left" Margin="-290,238,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <Label Content="Address Line 2" HorizontalAlignment="Left" Margin="-290,295,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <Label Content="City" HorizontalAlignment="Left" Margin="-290,352,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <TextBox x:Name="txtAdd1" HorizontalAlignment="Left" Height="25" Margin="-290,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" FontSize="16"/>
+            <TextBox x:Name="txtAdd2" HorizontalAlignment="Left" Height="25" Margin="-290,327,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" FontSize="16"/>
+            <TextBox x:Name="txtCity" HorizontalAlignment="Left" Height="25" Margin="-290,384,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="114" FontSize="16"/>
+            <ComboBox x:Name="cmbCounty" HorizontalAlignment="Left" Margin="-130,384,0,0" VerticalAlignment="Top" Width="120"/>
+            <Label Content="County" HorizontalAlignment="Left" Margin="-130,352,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <Label Content="Sort Code" HorizontalAlignment="Left" Margin="-290,422,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <TextBox x:Name="txtSortCode" HorizontalAlignment="Left" Height="25" Margin="-290,450,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="114" FontSize="16" Text="101010" IsReadOnly="True"/>
+            <Label Content="Account Type" HorizontalAlignment="Left" Margin="-130,422,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <TextBox x:Name="txtAccountType" HorizontalAlignment="Left" Height="25" Margin="-130,450,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="114" FontSize="16" Text="Current" IsReadOnly="True"/>
+
+        </DockPanel>
+
+
+        <Button x:Name="btnEdit" Content="Edit Account" HorizontalAlignment="Left" Margin="56,522,0,0" VerticalAlignment="Top" Width="198" Height="50" FontSize="24" Cursor="Hand" Background="#FF00C4EA" BorderBrush="Black" Click="btnEdit_Click"/>
+
+
     </Grid>
 </Window>

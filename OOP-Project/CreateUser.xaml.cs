@@ -15,22 +15,17 @@ using System.Windows.Shapes;
 namespace OOP_Project
 {
     /// <summary>
-    /// Interaction logic for EditAccount.xaml
+    /// Interaction logic for CreateUser.xaml
     /// </summary>
-    public partial class EditAccount : Window
+    public partial class CreateUser : Window
     {
-        public EditAccount()
+        public CreateUser()
         {
             InitializeComponent();
         }
 
-        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-
-
-
-
-
 
             this.Close();
         }

@@ -15,24 +15,18 @@ using System.Windows.Shapes;
 namespace OOP_Project
 {
     /// <summary>
-    /// Interaction logic for EditAccount.xaml
+    /// Interaction logic for FundManager.xaml
     /// </summary>
-    public partial class EditAccount : Window
+    public partial class FundManager : Window
     {
-        public EditAccount()
+        public FundManager()
         {
             InitializeComponent();
         }
 
-        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        private void btnTransfer_Click(object sender, RoutedEventArgs e)
         {
 
-
-
-
-
-
-            this.Close();
         }
     }
 }

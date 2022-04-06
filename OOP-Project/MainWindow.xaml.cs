@@ -35,8 +35,9 @@ namespace OOP_Project
         {
             ActionMenu am = new ActionMenu();
             am.Owner = this;
+            am.Show();
             this.Hide();
-            am.ShowDialog();
+         
 
             //string bankuser = txtUsername.Text;
             //string bankpass = hp.PassHash(pbPassword.Password.ToString()); // encryption
@@ -66,10 +67,11 @@ namespace OOP_Project
 
         private void btnCreateAccount_Click(object sender, RoutedEventArgs e)
         {
-            CreateAccount ca = new CreateAccount();
-            ca.Owner = this;
-            this.Hide();
-            ca.ShowDialog();
+            CreateUser cu = new CreateUser();
+            cu.Owner = this;
+            cu.ShowDialog();
+            //this.Close();
+          
         }
 
         private void txtUsername_TextChanged(object sender, TextChangedEventArgs e)

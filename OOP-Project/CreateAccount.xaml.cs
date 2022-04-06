@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BIZ;
 
 namespace OOP_Project
 {
@@ -22,7 +23,8 @@ namespace OOP_Project
        
         public CreateAccount()
         {
-            //cmbCounty.DataSource = Enum.GetNames(typeof(Counties));
+            
+            //cmbCounty.ItemsSource = Enum.GetNames(typeof(BIZ.Counties));
             //test
             InitializeComponent();
         }
@@ -121,10 +123,7 @@ namespace OOP_Project
             //    }
             //}
 
-            ActionMenu am = new ActionMenu();
-            am.Owner = this;
-            this.Hide();
-            am.Show();
+            this.Close();
         }
     }
 }

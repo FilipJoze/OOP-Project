@@ -39,5 +39,54 @@ namespace OOP_Project
         {
 
         }
+
+        private void btnTransferFunds_Click(object sender, RoutedEventArgs e)
+        {
+            FundManager fm = new FundManager();
+            fm.tabControlFunds.SelectedItem = fm.tabTransfer;
+            fm.ShowDialog();
+            
+        }
+
+        private void btnWithdrawFunds_Click(object sender, RoutedEventArgs e)
+        {
+            FundManager fm = new FundManager();
+            fm.tabControlFunds.SelectedItem = fm.tabWithdraw;
+            fm.ShowDialog();
+            
+        }
+
+        private void btnDepositFunds_Click(object sender, RoutedEventArgs e)
+        {
+            FundManager fm = new FundManager();
+            fm.tabControlFunds.SelectedItem = fm.tabDeposit;
+            fm.ShowDialog();
+        }
+
+        private void btnViewTransactionHistory_Click(object sender, RoutedEventArgs e)
+        {
+            FundManager fm = new FundManager();
+            fm.tabControlFunds.SelectedItem = fm.tabHistory;
+            fm.ShowDialog();
+        }
+
+        private void btnAddAccount_Click(object sender, RoutedEventArgs e)
+        {
+            CreateAccount ca = new CreateAccount();
+            ca.ShowDialog();
+        }
+
+        private void btnEditAccount_Click(object sender, RoutedEventArgs e)
+        {
+            EditAccount ea = new EditAccount();
+            ea.ShowDialog();
+        }
+
+        private void btnLogOut_Click(object sender, RoutedEventArgs e)
+        {
+            UserLogin ul = new UserLogin();
+            ul.Show();
+            this.Close();
+        }
     }
 }
