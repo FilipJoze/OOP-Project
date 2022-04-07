@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:OOP_Project"
         mc:Ignorable="d"
         Title="EditAccount" Height="611.47" Width="318.235">
-    <Grid>
+    <Grid Loaded="Grid_Loaded">
 
 
         <DockPanel Margin="10,10,0,-0">
@@ -31,6 +31,10 @@
             <TextBox x:Name="txtSortCode" HorizontalAlignment="Left" Height="25" Margin="-290,450,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="114" FontSize="16" Text="101010" IsReadOnly="True"/>
             <Label Content="Account Type" HorizontalAlignment="Left" Margin="-130,422,0,0" VerticalAlignment="Top" FontSize="16"/>
             <TextBox x:Name="txtAccountType" HorizontalAlignment="Left" Height="25" Margin="-130,450,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="114" FontSize="16" Text="Current" IsReadOnly="True"/>
+            <Label Content="Account Number" HorizontalAlignment="Left" Margin="-130,10,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <TextBox x:Name="txtAccNumber" HorizontalAlignment="Left" Height="25" Margin="-130,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="114" FontSize="16" Text="Search..." MaxLength="6"/>
+            <Button x:Name="btnPopulateAccount" Content="Search ID" HorizontalAlignment="Left" Margin="-130,70,0,0" VerticalAlignment="Top" Width="115" Height="20" FontSize="12" Cursor="Hand" Background="#FF00C4EA" BorderBrush="Black" Click="btnEdit_Click"/>
+
 
         </DockPanel>
 

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:OOP_Project"
         mc:Ignorable="d"
         Title="ActionMenu" Height="450" Width="800">
-    <Grid>
+    <Grid Loaded="Grid_Loaded">
         <StackPanel x:Name="ActionStackPanel" HorizontalAlignment="Left" Height="40" Margin="0,0,-0.4,0" VerticalAlignment="Top" FlowDirection="LeftToRight" Width="794" Background="#FF00D6FF" OpacityMask="#FF00FAFF">
             <Menu x:Name="ActionMenu1" Height="40" Margin="0,0,-0.4,0" OpacityMask="#7F000000" BorderBrush="Black">
 
@@ -42,10 +42,14 @@
             </Menu>
 
         </StackPanel>
-        <DataGrid HorizontalAlignment="Left" Height="365" Margin="10,45,0,0" VerticalAlignment="Top" Width="676" Foreground="Black" BorderBrush="#FF00C4EA"/>
+        <DataGrid x:Name="dgvAccounts" HorizontalAlignment="Left" Height="365" Margin="10,45,0,0" VerticalAlignment="Top" Width="676" Foreground="Black" BorderBrush="#FF00C4EA" SelectionChanged="DataGrid_SelectionChanged"/>
         <StackPanel>
-              <Button x:Name="btnRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="691,45,0,0" VerticalAlignment="Top" Width="93" Height="40" Cursor="Hand" Background="#FF00C4EA"/>
-         </StackPanel>
+            <StackPanel Margin="688,0,-0.4,0" Height="408">
+                <Button x:Name="btnRefresh" Content="Refresh" HorizontalAlignment="Center" Margin="0,45,0,0" VerticalAlignment="Top" Width="93" Height="40" Cursor="Hand" Background="#FF00C4EA" Click="btnRefresh_Click"/>
+                <TextBox x:Name="txtSearch" Width="100" Height="24" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" TextChanged="txtSearch_TextChanged" MaxLength="6" TextAlignment="Center"/>
+            </StackPanel>
+
+        </StackPanel>
 
     </Grid>
 </Window>

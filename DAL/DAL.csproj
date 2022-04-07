@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SearchAccountID.cs" />
     <Compile Include="UploadAccount.cs" />
     <Compile Include="CreateUserAccount.cs" />
     <Compile Include="DAO.cs" />

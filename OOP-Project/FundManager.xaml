@@ -12,7 +12,7 @@
                 <Grid Background="#FFE5E5E5">
                     <DockPanel HorizontalAlignment="Left" Height="372" LastChildFill="False" VerticalAlignment="Top" Width="769" Margin="0,0,0,0">
                         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="372" Stroke="#FF00C4EA" VerticalAlignment="Top" Width="769"/>
-
+                      
                         <StackPanel Margin="-730,20,0,269" Width="150" Background="White" HorizontalAlignment="Left">
                             <Label Content="Transfer From:" Height="31" VerticalAlignment="Top"/>
                             <ComboBox Height="22" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>

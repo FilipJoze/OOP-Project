@@ -21,7 +21,6 @@ namespace OOP_Project
     /// </summary>
     public partial class CreateAccount : Window
     {
-        
        
         public CreateAccount()
         {
@@ -48,10 +47,10 @@ namespace OOP_Project
                 string po = txtPhone.Text;
                 string add1 = txtAdd1.Text;
                 string add2 = txtAdd2.Text;
-                string city = cmbCounty.SelectedItem.ToString();
-                string cy = txtCity.Text;
+                string city = txtCity.Text;
+                string cy = cmbCounty.SelectedItem.ToString();
                 int scode = int.Parse(txtSortCode.Text);
-                int iBal = int.Parse(txtBalance.Text);
+                int iBal = int.Parse(txtBalance.Text) * 100;
                 
 
                 string accType = null;
@@ -86,20 +85,20 @@ namespace OOP_Project
                     odraft = decimal.Parse(txtOverdraft.Text);
                 }
                 
-                upa.UploadBankAccount(fn, sn, em, po, add1, add2, city, cy, accType, scode, iBal, odraft);
-                MessageBox.Show("Bank Customer Was Created", "Success", MessageBoxButton.OK);
+                upa.UploadBankAccount(fn, sn, em, po, add1, add2, city, cy, accType, scode, iBal, amount, odraft);
+                MessageBox.Show("Bank Customer Was Created", "Success", MessageBoxButton.OK,MessageBoxImage.Information);
 
                 txtSortCode.Clear();
                 txtBalance.Clear();
                 txtOverdraft.Clear();
-
+                this.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
 
-            this.Close();
+           
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)

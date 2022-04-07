@@ -15,11 +15,11 @@ namespace DAL
 
         //public Customer(string fn, string sn, string email, string ph, string add1, string add2,
         //    string city, string cy, string AccType, int AccNo, int scode, decimal iBal, decimal odraft)
-       public void UploadBankAccount(string fn, string sn, string email, string ph, string add1, string add2, string city, string cy, string AccType, int scode, int iBal, decimal odraft)
+       public void UploadBankAccount(string fn, string sn, string email, string ph, string add1, string add2, string city, string cy, string AccType, int scode, int iBal, decimal amount, decimal odraft)
         {
 
             SqlCommand cmd = dao.OpenCon().CreateCommand();
-            cmd.CommandText = "uspCreateAccount";
+            cmd.CommandText = "uspAddAccount";
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@fn", fn);
@@ -33,7 +33,7 @@ namespace DAL
             cmd.Parameters.AddWithValue("@AccType", AccType);
             cmd.Parameters.AddWithValue("@SCode", scode);
             cmd.Parameters.AddWithValue("@IBal", iBal);
-            //cmd.Parameters.AddWithValue("@am", am);
+            cmd.Parameters.AddWithValue("@am", amount);
             cmd.Parameters.AddWithValue("@ODraft", odraft);
 
             cmd.ExecuteNonQuery();
