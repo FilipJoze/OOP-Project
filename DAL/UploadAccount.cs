@@ -8,14 +8,14 @@ using System.Data.SqlClient;
 
 namespace DAL
 {
-    class CreateAccount
+    public class UploadAccount
     {
         DAO dao = new DAO();
 
 
         //public Customer(string fn, string sn, string email, string ph, string add1, string add2,
         //    string city, string cy, string AccType, int AccNo, int scode, decimal iBal, decimal odraft)
-       public void AddBankAccount(string fn, string sn, string email, string ph, string add1, string add2, string city, string cy, string AccType, int scode, int iBal, decimal odraft)
+       public void UploadBankAccount(string fn, string sn, string email, string ph, string add1, string add2, string city, string cy, string AccType, int scode, int iBal, decimal odraft)
         {
 
             SqlCommand cmd = dao.OpenCon().CreateCommand();

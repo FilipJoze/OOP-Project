@@ -50,6 +50,7 @@ namespace OOP_Project
                 //string pass = hp.PassHash(pbPassword.Password.ToString()); //encryption
                 string pass = pbPassword.Password.ToString();
 
+                pass = hp.PassHash(pbPassword.Password.ToString());
 
                 bool readSuccess = lc.CheckUserLogin(user, pass);
 

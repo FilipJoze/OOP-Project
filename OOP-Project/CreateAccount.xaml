@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:OOP_Project"
         mc:Ignorable="d"
         Title="CreateAccount" Height="547.2" Width="565">
-    <Grid>
+    <Grid Loaded="Grid_Loaded">
+        
         <DockPanel Margin="335,290,23.4,61.4">
             <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="150" Margin="0,0,0,0" Stroke="#FF00C4EA" VerticalAlignment="Top" Width="200"/>
             <TextBox x:Name="txtBalance" HorizontalAlignment="Left" Height="38" Margin="-175,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" FontSize="24"/>
@@ -37,13 +38,13 @@
 
         <DockPanel Margin="335,135,0,0">
             <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="150" Margin="0,0,0,0" Stroke="#FF00C4EA" VerticalAlignment="Top" Width="200"/>
-            <TextBox x:Name="txtOverdraft" HorizontalAlignment="Left" Height="38" Margin="-175,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" FontSize="24"/>
+            <TextBox x:Name="txtOverdraft" HorizontalAlignment="Left" Height="38" Margin="-175,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" FontSize="24" Text="0"/>
             <Label Content="Overdraft" HorizontalAlignment="Left" Margin="-175,20,0,0" VerticalAlignment="Top" FontSize="24"/>
         </DockPanel>
         <DockPanel Margin="335,30,0.4,-45.4">
             <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="97" Margin="0,0,0,0" Stroke="#FF00C4EA" VerticalAlignment="Top" Width="200"/>
-            <RadioButton x:Name="rdoCurrent" Margin="-270,70,0,435.8" Width="66" Content="Current" />
-            <RadioButton x:Name="rdoSavings" Margin="-120,70,0,435.8" Width="66" Content="Savings" />
+            <RadioButton x:Name="rdoCurrent" Margin="-270,70,0,435.8" Width="66" Content="Current" Checked="rdoCurrent_Checked" />
+            <RadioButton x:Name="rdoSavings" Margin="-120,70,0,435.8" Width="66" Content="Savings" Checked="rdoSavings_Checked" />
             <Label Content="Account Type" HorizontalAlignment="Left" Margin="-175,20,0,0" VerticalAlignment="Top" FontSize="24"/>
         </DockPanel>
         <Button x:Name="btnCreate" Content="Create Account" HorizontalAlignment="Left" Margin="335,449,0,0" VerticalAlignment="Top" Width="198" Height="50" FontSize="24" Cursor="Hand" Background="#FF00C4EA" BorderBrush="Black" Click="btnCreate_Click"/>

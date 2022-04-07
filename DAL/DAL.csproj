@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreateAccount.cs" />
+    <Compile Include="UploadAccount.cs" />
     <Compile Include="CreateUserAccount.cs" />
     <Compile Include="DAO.cs" />
     <Compile Include="FundTransfer.cs" />

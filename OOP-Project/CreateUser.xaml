@@ -14,11 +14,11 @@
             <Label Content="Password" HorizontalAlignment="Left" Margin="-175,120,0,0" VerticalAlignment="Top" FontSize="20"/>
             <PasswordBox x:Name="pbPassword" Height="35" VerticalAlignment="Top" Width="149" Margin="-190,150,0,0"/>
             <Label Content="Re-enter Password" HorizontalAlignment="Left" Margin="-175,200,0,0" VerticalAlignment="Top" FontSize="20"/>
-            <PasswordBox x:Name="pbPasswordCheck" Height="35" VerticalAlignment="Top" Width="149" Margin="-190,230,0,0" TextInput="pbPasswordCheck_TextInput"/>
-            <CheckBox x:Name="cbPasswordCheck" Content="Password Matches" HorizontalAlignment="Left" Margin="-150,270,0,0" VerticalAlignment="Top" Height="23" Width="122" />
+            <PasswordBox x:Name="pbPasswordCheck" Height="35" VerticalAlignment="Top" Width="149" Margin="-190,230,0,0" TextInput="pbPasswordCheck_TextInput" DataContextChanged="pbPasswordCheck_DataContextChanged" PasswordChanged="pbPasswordCheck_PasswordChanged"/>
+            <CheckBox x:Name="cbPasswordCheck" Content="Password Matches" HorizontalAlignment="Left" Margin="-150,270,0,0" VerticalAlignment="Top" Height="23" Width="122" Checked="cbPasswordCheck_Checked"/>
             <TextBlock x:Name="txtStatus" Text="" Width="193" Margin="-200,293,0,61.8" TextAlignment="Center"/>
         </DockPanel>
-        <Button x:Name="btnTransfer" Content="Create User" Margin="10,341,10,10" FontSize="30" Cursor="Hand" Background="#FF00C4EA" BorderBrush="Black" Click="btnCreate_Click"/>
+        <Button x:Name="btnCreate" Content="Create User" Margin="10,341,10,10" FontSize="30" Cursor="Hand" Background="#FF00C4EA" BorderBrush="Black" Click="btnCreate_Click"/>
 
     </Grid>
 </Window>

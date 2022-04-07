@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BIZ
 {
-    public class CreateAccount
+    public class CreateBankAccount
     {
         public string Firstname { get; set; }
         public string Surname { get; set; }
@@ -19,10 +19,11 @@ namespace BIZ
         public string AccountType { get; set; }
         public int AccountNo { get; set; }
         public int SortCode { get; set; }
-        public decimal InitialBal { get; set; }
+        public int InitialBal { get; set; }
+        public decimal Amount { get; set; }
         public decimal OverdraftLimit { get; set; }
 
-        public CreateAccount(string fn, string sn, string em, string po, string add1, string add2, string cty, string cy, string at, int anum, int sc, decimal ib, decimal ol)
+        public CreateBankAccount(string fn, string sn, string em, string po, string add1, string add2, string cty, string cy, string at, int anum, int sc, int ib, decimal am, decimal ol)
         {
             Firstname = fn;
             Surname = sn;
@@ -36,6 +37,7 @@ namespace BIZ
             AccountNo = anum;
             SortCode = sc;
             InitialBal = ib;
+            Amount = am;
             OverdraftLimit = ol;
         }
 

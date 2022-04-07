@@ -32,11 +32,6 @@ namespace OOP_Project
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
 
-            this.Close();
-        }
-
-        private void pbPasswordCheck_TextInput(object sender, TextCompositionEventArgs e)
-        {
             //bool for valid password 
             bool passwordValid = false;
 
@@ -45,11 +40,6 @@ namespace OOP_Project
             int minLower;
             int minLength = 7;
             string allowedSpecials = "@#/.!";
-            //gap
-            //
-            //
-            //
-            //
             //
 
             string createuser = txtUsername.Text;
@@ -94,15 +84,14 @@ namespace OOP_Project
             else
             {
                 MessageBox.Show("Password Criteria Met", "Password Choice Good", MessageBoxButton.OK);
+                //
                 passwordValid = true;
                 createpassword = hp.PassHash(pbPassword.Password.ToString()); //encrypts the accepted password under the criterias
                 cua.CreateUser(txtUsername.Text, createpassword);
 
                 MessageBox.Show("Admin Created", "Information", MessageBoxButton.OK);
 
-                txtUsername.Clear();
-                pbPassword.Clear();
-                pbPasswordCheck.Clear();
+                this.Close();
 
             }
             if (pbPasswordCheck.Password.ToString() != "")
@@ -110,16 +99,46 @@ namespace OOP_Project
                 if (passwordValid)
                 {
                     txtStatus.Text = "";
-
+                    this.Close();
                 }
                 else
                 {
                     txtStatus.Text = "Invalid Password";
                 }
             }
+        }
+
+        private void pbPasswordCheck_TextInput(object sender, TextCompositionEventArgs e)
+        {
+         
 
         }
 
+        private void pbPasswordCheck_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
+
+        private void cbPasswordCheck_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void pbPasswordCheck_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (pbPassword.Password.ToString() != pbPasswordCheck.Password.ToString())
+            {
+
+                cbPasswordCheck.IsChecked = false;
+                btnCreate.IsEnabled = false;
+
+            }
+            else
+            {
+                btnCreate.IsEnabled = true;
+                cbPasswordCheck.IsChecked = true;
+            }
+        }
     }
 }
 

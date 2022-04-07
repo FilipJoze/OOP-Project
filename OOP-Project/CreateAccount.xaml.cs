@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BIZ;
+using DAL;
 
 namespace OOP_Project
 {
@@ -20,6 +21,7 @@ namespace OOP_Project
     /// </summary>
     public partial class CreateAccount : Window
     {
+        
        
         public CreateAccount()
         {
@@ -33,97 +35,87 @@ namespace OOP_Project
         {
 
         }
+        UploadAccount upa = new UploadAccount();
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            ////bool for valid password 
-            //bool passwordValid = false;
+            try
+            { 
 
-            ////rules for password
-            //int minUpper = 1;
-            //int minLower;
-            //int minLength = 7;
-            //string allowedSpecials = "@#/.!";
-            ////gap
-            ////
-            ////
-            ////
-            ////
-            ////
+                string fn = txtFirstName.Text;
+                string sn = txtSurname.Text;
+                string em = txtEmail.Text;
+                string po = txtPhone.Text;
+                string add1 = txtAdd1.Text;
+                string add2 = txtAdd2.Text;
+                string city = cmbCounty.SelectedItem.ToString();
+                string cy = txtCity.Text;
+                int scode = int.Parse(txtSortCode.Text);
+                int iBal = int.Parse(txtBalance.Text);
+                
 
-            //string createuser = txtCreateUser.Text;
+                string accType = null;
+                int sc = int.Parse(txtSortCode.Text);
 
-            //string createpassword = pbCreatePass.Password.ToString();
-            //char[] characters = createpassword.ToCharArray();
-            ////current variables
-            //int upper = 0;
-            //int character = 0;
-            //int length = createpassword.Length;
-            //int illegalCharacters = 0;
 
-            ////checks the password
-            //foreach (char enteredCharacters in characters)
-            //{
-            //    if (char.IsUpper(enteredCharacters))
-            //    {
-            //        upper = upper + 1;
+                int ib = int.Parse(txtBalance.Text);
+                decimal amount = 0M;
+                decimal odraft = 0M;
+                //int test2;
+                //string Message = "500";
+                //bool success = int.TryParse(txtInitialBal.Text, out ib);
 
-            //    }
-            //    else if (char.IsLower(enteredCharacters))
-            //    {
+                //if(success == true)
+                //{
+                //    txtInitialBal.Text = ib.ToString();
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Incorrect");
+                //}
 
-            //    }
-            //    else if (allowedSpecials.Contains(enteredCharacters.ToString())) //needs double check
-            //    {
-            //        character = character + 1;
+                if (rdoSavings.IsChecked == true)
+                {
+                    accType = "Savings Account";
 
-            //    }
-            //    else
-            //    {
-            //        illegalCharacters = illegalCharacters + 1;
+                    txtOverdraft.Text = odraft.ToString();
+                }
+                else if (rdoCurrent.IsChecked == true)
+                {
+                    accType = "Current Account";
+                    odraft = decimal.Parse(txtOverdraft.Text);
+                }
+                
+                upa.UploadBankAccount(fn, sn, em, po, add1, add2, city, cy, accType, scode, iBal, odraft);
+                MessageBox.Show("Bank Customer Was Created", "Success", MessageBoxButton.OK);
 
-            //    }
+                txtSortCode.Clear();
+                txtBalance.Clear();
+                txtOverdraft.Clear();
 
-            //}
-            //if (upper < minUpper || length < minLength || illegalCharacters >= 1)
-            //{
-            //    MessageBox.Show("Insufficient Password Criteria", "Re-Enter Password", MessageBoxButton.OK);
-            //    passwordValid = false;
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Password Criteria Met", "Password Choice Good", MessageBoxButton.OK);
-            //    passwordValid = true;
-            //    createpassword = hp.PassHash(pbCreatePass.Password.ToString()); //encrypts the accepted password under the criterias
-            //    SqlCommand cmd = dao.OpenCon().CreateCommand();
-            //    cmd.CommandText = "uspCreateUser";
-            //    cmd.CommandType = CommandType.StoredProcedure;
-            //    cmd.Parameters.AddWithValue("@bankuser", @createuser);
-            //    cmd.Parameters.AddWithValue("@bankpassword", @createpassword);
-
-            //    dao.OpenCon();
-            //    cmd.ExecuteNonQuery();
-            //    dao.CloseCon();
-            //    MessageBox.Show("Admin Created", "Information", MessageBoxButton.OK);
-
-            //    txtCreateUser.Clear();
-            //    pbCreatePass.Clear();
-
-            //}
-            //if (pbPassCheck.Password.ToString() != "")
-            //{
-            //    if (passwordValid)
-            //    {
-            //        statusText.Text = "";
-
-            //    }
-            //    else
-            //    {
-            //        statusText.Text = "Invalid Password";
-            //    }
-            //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
             this.Close();
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            cmbCounty.ItemsSource = Enum.GetValues(typeof(Counties));
+        }
+
+        private void rdoCurrent_Checked(object sender, RoutedEventArgs e)
+        {
+            txtOverdraft.IsEnabled = true;
+        }
+
+        private void rdoSavings_Checked(object sender, RoutedEventArgs e)
+        {
+            txtOverdraft.IsEnabled = false;
+            txtOverdraft.Text = "0";
         }
     }
 }
