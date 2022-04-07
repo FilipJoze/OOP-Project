@@ -45,31 +45,34 @@ namespace OOP_Project
             GetAccNo();
         }
 
-        private void cboAccNo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void cboAccNoD_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             GetNames();
         }
         private void btnDeposit_Click(object sender, RoutedEventArgs e)
         {
-            int accno = int.Parse(cboAccNo.SelectedItem.ToString());
-            decimal DAmount = decimal.Parse(txtDAmount.Text);
-            decimal bal = decimal.Parse(txtbal.Text);
-            decimal newamount = (DAmount + bal) * 100;
+            
+            
+                int accno = int.Parse(cboAccNoD.SelectedItem.ToString());
+                decimal DAmount = decimal.Parse(txtDAmount.Text);
+                decimal bal = decimal.Parse(txtbal.Text);
+                decimal newamount = (DAmount + bal) * 100;
 
-            dw.UpdateDepositDetails(newamount, DAmount, accno);
+                dw.UpdateDepositDetails(newamount, DAmount, accno);
 
-            MessageBox.Show("Deposit Successfull", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Deposit Successfull", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
-            txtDAmount.Clear();
-            txtAccname.Clear();
-            cboAccNo.Text = "";
+                txtDAmount.Clear();
+                txtAccname.Clear();
+           
+            
         }
 
 
 
         void GetAccNo()
         {
-            string select = "SELECT * FROM MyCustomer";
+            string select = "SELECT * FROM Accounts";
 
             SqlCommand cmd = new SqlCommand(select, dao.OpenCon());
 
@@ -77,16 +80,16 @@ namespace OOP_Project
 
             while (dr.Read())
             {
-                string acc = dr["AccountNo"].ToString();
-                cboAccNo.Items.Add(acc);
+                string acc = dr["AccountId"].ToString();
+                cboAccNoD.Items.Add(acc);
             }
             dao.CloseCon();
         }
 
         void GetNames()
         {
-            string select = "SELECT * FROM MyCustomer WHERE AccountNo = @accno";
-            string AcNo = cboAccNo.SelectedItem.ToString();
+            string select = "SELECT * FROM Accounts WHERE AccountId = @accno";
+            string AcNo = cboAccNoD.SelectedItem.ToString();
 
             SqlCommand cmd = new SqlCommand(select, dao.OpenCon());
             cmd.Parameters.AddWithValue("@accno", AcNo);
