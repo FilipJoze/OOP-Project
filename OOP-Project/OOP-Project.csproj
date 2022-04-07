@@ -76,9 +76,6 @@
     <Compile Include="ActionMenu.xaml.cs">
       <DependentUpon>ActionMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdminLogin.xaml.cs">
-      <DependentUpon>AdminLogin.xaml</DependentUpon>
-    </Compile>
     <Compile Include="CreateAccount.xaml.cs">
       <DependentUpon>CreateAccount.xaml</DependentUpon>
     </Compile>
@@ -99,10 +96,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ActionMenu.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AdminLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
