@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DAL;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace OOP_Project
 {
@@ -19,6 +22,10 @@ namespace OOP_Project
     /// </summary>
     public partial class ActionMenu : Window
     {
+        DAO dao = new DAO();
+        SqlDataAdapter da = new SqlDataAdapter();
+        DataTable dt = new DataTable();
+
         public ActionMenu()
         {
             InitializeComponent();
@@ -87,6 +94,75 @@ namespace OOP_Project
             UserLogin ul = new UserLogin();
             ul.Show();
             this.Close();
+        }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txtSearch.Text == "")
+            {
+                PopulateGrid();
+            }
+            int search = 1;
+            if(int.TryParse(txtSearch.Text, out search))
+            {
+                SearchByAccNum(search);
+            }
+           
+        }
+
+        private void SearchByAccNum(int search)
+        {
+            da = new SqlDataAdapter();
+            dt = new DataTable();
+            DataGrid dgv = new DataGrid();
+
+            SqlCommand cmd = dao.OpenCon().CreateCommand();
+            cmd.CommandText = "uspSearch";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+
+            cmd.Parameters.AddWithValue("@searchacc", search);
+            dao.OpenCon();
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            dgvAccounts.ItemsSource = dt.DefaultView;
+            dao.CloseCon();
+
+
+        }
+        
+        private void PopulateGrid()
+        {
+            da = new SqlDataAdapter();
+            dt = new DataTable();
+            DataGrid dgv = new DataGrid();
+
+            SqlCommand cmd = dao.OpenCon().CreateCommand();
+            cmd.CommandText = "uspShowAccounts";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+
+            //cmd.Parameters.AddWithValue("@searchacc", search);
+            dao.OpenCon();
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            dgvAccounts.ItemsSource = dt.DefaultView;
+            dao.CloseCon();
+        }
+        
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            PopulateGrid();
+        }
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            PopulateGrid();
         }
     }
 }

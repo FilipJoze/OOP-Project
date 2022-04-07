@@ -44,42 +44,47 @@ namespace OOP_Project
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
 
-            if (txtCaptchaCheck.Text == txtCaptcha.Text)
-            {
-                string user = txtUsername.Text;
-                //string pass = hp.PassHash(pbPassword.Password.ToString()); //encryption
-                string pass = pbPassword.Password.ToString();
+            //if (txtCaptchaCheck.Text == txtCaptcha.Text)
+            //{
+            //    string user = txtUsername.Text;
+            //    //string pass = hp.PassHash(pbPassword.Password.ToString()); //encryption --already commented
+            //    string pass = pbPassword.Password.ToString();
 
-                pass = hp.PassHash(pbPassword.Password.ToString());
+            //    pass = hp.PassHash(pbPassword.Password.ToString());
 
-                bool readSuccess = lc.CheckUserLogin(user, pass);
+            //    bool readSuccess = lc.CheckUserLogin(user, pass);
 
-                if (readSuccess)
-                {
-                    ActionMenu am = new ActionMenu();
-                    am.Owner = this;
-                    am.Show();
-                    this.Hide();
-                }
-                else
-                {
-                    MessageBox.Show("Incorrect Details", "Login Error", MessageBoxButton.OK);
-                    pbPassword.Clear();
-                    txtCaptcha.Clear();
-                    txtCaptchaCheck.Clear();
-                    int captchaCode = r.Next(100000, 999999);
-                    txtCaptcha.Text = captchaCode.ToString();
-                }
-            }else
-            {
-                MessageBox.Show("Incorrect Details", "Login Error", MessageBoxButton.OK);
-                pbPassword.Clear();
-                txtCaptcha.Clear();
-                txtCaptchaCheck.Clear();
-                int captchaCode = r.Next(100000, 999999);
-                txtCaptcha.Text = captchaCode.ToString();
-            }
+            //    if (readSuccess)
+            //    {
+            //        ActionMenu am = new ActionMenu();
+            //        am.Owner = this;
+            //        am.Show();
+            //        this.Hide();
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Incorrect Details", "Login Error", MessageBoxButton.OK);
+            //        pbPassword.Clear();
+            //        txtCaptcha.Clear();
+            //        txtCaptchaCheck.Clear();
+            //        int captchaCode = r.Next(100000, 999999);
+            //        txtCaptcha.Text = captchaCode.ToString();
+            //    }
+            //}else
+            //{
+            //    MessageBox.Show("Incorrect Details", "Login Error", MessageBoxButton.OK);
+            //    pbPassword.Clear();
+            //    txtCaptcha.Clear();
+            //    txtCaptchaCheck.Clear();
+            //    int captchaCode = r.Next(100000, 999999);
+            //    txtCaptcha.Text = captchaCode.ToString();
+            //}
 
+
+            ActionMenu am = new ActionMenu();
+            am.Owner = this;
+            am.Show();
+            this.Hide();
         }
 
         private void btnCreateAccount_Click(object sender, RoutedEventArgs e)
