@@ -15,7 +15,7 @@
             <Label Content="Surname" HorizontalAlignment="Left" Margin="-290,67,0,0" VerticalAlignment="Top" FontSize="16"/>
             <Label Content="Email" HorizontalAlignment="Left" Margin="-290,124,0,0" VerticalAlignment="Top" FontSize="16"/>
             <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Height="25" Margin="-290,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" FontSize="16" IsReadOnly="True"/>
-            <TextBox x:Name="txtSurname" HorizontalAlignment="Left" Height="25" Margin="-290,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" FontSize="16" IsReadOnly="True"/>
+            <TextBox x:Name="txtSurname" HorizontalAlignment="Left" Height="25" Margin="-290,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" FontSize="16" IsReadOnly="True"/>
             <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="25" Margin="-290,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="274" FontSize="16"/>
             <Label Content="Phone" HorizontalAlignment="Left" Margin="-290,181,0,0" VerticalAlignment="Top" FontSize="16"/>
             <TextBox x:Name="txtPhone" HorizontalAlignment="Left" Height="25" Margin="-290,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" FontSize="16"/>
@@ -32,8 +32,8 @@
             <Label Content="Account Type" HorizontalAlignment="Left" Margin="-130,422,0,0" VerticalAlignment="Top" FontSize="16"/>
             <TextBox x:Name="txtAccountType" HorizontalAlignment="Left" Height="25" Margin="-130,450,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="114" FontSize="16" Text="Current" IsReadOnly="True"/>
             <Label Content="Account Number" HorizontalAlignment="Left" Margin="-130,10,0,0" VerticalAlignment="Top" FontSize="16"/>
-            <TextBox x:Name="txtAccNumber" HorizontalAlignment="Left" Height="25" Margin="-130,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="114" FontSize="16" Text="Search..." MaxLength="6"/>
-            <Button x:Name="btnPopulateAccount" Content="Search ID" HorizontalAlignment="Left" Margin="-130,70,0,0" VerticalAlignment="Top" Width="115" Height="20" FontSize="12" Cursor="Hand" Background="#FF00C4EA" BorderBrush="Black" Click="btnEdit_Click"/>
+            <TextBox x:Name="txtAccNumber" HorizontalAlignment="Left" Height="25" Margin="-130,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="114" FontSize="16" MaxLength="6"/>
+            <Button x:Name="btnPopulateAccount" Content="Search ID" HorizontalAlignment="Left" Margin="-130,70,0,0" VerticalAlignment="Top" Width="115" Height="20" FontSize="12" Cursor="Hand" Background="#FF00C4EA" BorderBrush="Black" Click="btnPopulateAccount_Click"/>
 
 
         </DockPanel>

@@ -32,9 +32,37 @@ namespace OOP_Project
         DAO dao = new DAO();
         SearchAccountID sacid = new SearchAccountID();
         SqlDataReader dr;
-        
+        UpdateCus up = new UpdateCus();
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+
+            string email = txtEmail.Text;
+            string ph = txtPhone.Text;
+            string add1 = txtAdd1.Text;
+            string add2 = txtAdd2.Text;
+            string city = txtCity.Text;
+            string county = cmbCounty.SelectedItem.ToString();
+            int AccountNo = int.Parse(txtAccNumber.Text);
+
+            up.UpdateCustomer(email, ph, add1, add2, city, county, AccountNo);
+
+            MessageBox.Show("Data Updated Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            txtEmail.Clear();
+            txtPhone.Clear();
+            txtAdd1.Clear();
+            txtAdd2.Clear();
+            txtCity.Clear();
+
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            cmbCounty.ItemsSource = Enum.GetValues(typeof(Counties));
+        }
+
+        private void btnPopulateAccount_Click(object sender, RoutedEventArgs e)
         {
             string AcNo = txtAccNumber.Text;
             SqlCommand cmd = dao.OpenCon().CreateCommand();
@@ -71,13 +99,6 @@ namespace OOP_Project
             }
 
             dao.CloseCon();
-
-
-        }
-
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
-        {
-            cmbCounty.ItemsSource = Enum.GetValues(typeof(Counties));
         }
     }
     }

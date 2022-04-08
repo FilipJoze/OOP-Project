@@ -17,22 +17,13 @@
                 </MenuItem>
                 
                 <MenuItem Header="Services" Height="40" Width="90" Background="#FF00C4EA" Cursor="Hand" BorderBrush="#00000000" Foreground="Black">
-                    <StackPanel>
-                        <Button x:Name="btnTransferFunds" Content="Transfer Funds" Height="25" Width="auto" Cursor="Hand" Background="#00DDDDDD" BorderBrush="#00707070" Click="btnTransferFunds_Click"/>
 
-                    </StackPanel>
-                    <StackPanel>
-                        <Button x:Name="btnWithdrawFunds" Content="Withdraw Funds" Height="25" Width="auto" Cursor="Hand" Background="#00DDDDDD" BorderBrush="#00707070" Click="btnWithdrawFunds_Click"/>
+                    <Button x:Name="btnTransferFunds" Content="Transfer Funds" Height="25" Width="auto" Cursor="Hand" Background="#00DDDDDD" BorderBrush="#00707070" Click="btnTransferFunds_Click"/>
+                    <Button x:Name="btnWithdrawFunds" Content="Withdraw Funds" Height="25" Width="auto" Cursor="Hand" Background="#00DDDDDD" BorderBrush="#00707070" Click="btnWithdrawFunds_Click"/>
+                    <Button x:Name="btnDepositFunds" Content="Deposit Funds" Height="25" Width="auto" Cursor="Hand" Background="#00DDDDDD" BorderBrush="#00707070" Click="btnDepositFunds_Click"/>
+                    <Button x:Name="btnViewTransactionHistory" Content="Transaction History" Height="25" Width="auto" Cursor="Hand" Background="#00DDDDDD" BorderBrush="#00707070" Click="btnViewTransactionHistory_Click"/>
+                    <Button x:Name="btnSerialiseXML" Content="Serialise into XML" Height="25" Width="auto" Cursor="Hand" Background="#00DDDDDD" BorderBrush="#00707070" Click="btnSerialiseXML_Click"/>
 
-                    </StackPanel>
-                    <StackPanel>
-                        <Button x:Name="btnDepositFunds" Content="Deposit Funds" Height="25" Width="auto" Cursor="Hand" Background="#00DDDDDD" BorderBrush="#00707070" Click="btnDepositFunds_Click"/>
-
-                    </StackPanel>
-                    <StackPanel>
-                        <Button x:Name="btnViewTransactionHistory" Content="Transaction History" Height="25" Width="auto" Cursor="Hand" Background="#00DDDDDD" BorderBrush="#00707070" Click="btnViewTransactionHistory_Click"/>
-
-                    </StackPanel>
                 </MenuItem>
                 
                 <!--<MenuItem Header="Settings" Height="40" Width="90" Background="#FF00C4EA" Click="MenuItem_Click_1" Cursor="Hand" BorderBrush="#00000000" Foreground="Black">

@@ -13,14 +13,15 @@ namespace DAL
 
         DAO dao = new DAO();
 
-        public void UpdateCustomer(string email, string add1, string add2, string city, string cy, int acc_no)
+        public void UpdateCustomer(string email, string ph, string add1, string add2, string city, string cy, int acc_no)
         {
             SqlCommand cmd = dao.OpenCon().CreateCommand();
 
-            cmd.CommandText = "uspUpdateCust";
+            cmd.CommandText = "uspUpdateAccount";
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@email", email);
+            cmd.Parameters.AddWithValue("@ph", ph);
             cmd.Parameters.AddWithValue("@add1", add1);
             cmd.Parameters.AddWithValue("@add2", add2);
             cmd.Parameters.AddWithValue("@city", city);

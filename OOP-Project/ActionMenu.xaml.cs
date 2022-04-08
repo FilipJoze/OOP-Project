@@ -164,5 +164,11 @@ namespace OOP_Project
         {
             PopulateGrid();
         }
+
+        private void btnSerialiseXML_Click(object sender, RoutedEventArgs e)
+        {
+            Serialiser sr = new Serialiser();
+            sr.ShowDialog();
+        }
     }
 }

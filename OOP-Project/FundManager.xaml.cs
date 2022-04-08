@@ -68,13 +68,37 @@ namespace OOP_Project
 
             decimal Limit = SBalance + ODLimit;
 
-
+            decimal SavingsDeductingam = SBalance - TAmount;
+            decimal CurrentDeductingam = Limit - TAmount;
+            decimal CurrentRemainingBalance = SBalance - Limit;
             if (txtAccountType.Text == "Savings Account" && SortCode == 101010)
             {
-                if (TAmount <= Limit)
+                if(txtAccountType.Text == "Savings Account" && SavingsDeductingam == 0)
+                {
+                    DialogResult result = System.Windows.Forms.MessageBox.Show("Your Account Balance will be 0", "Warning", (MessageBoxButtons)MessageBoxButton.OKCancel, (MessageBoxIcon)MessageBoxImage.Information);
+
+                    if (result == System.Windows.Forms.DialogResult.OK)
+                    {
+
+                        SenderTransfer();
+                        RecieverTransfer();
+                        GetSenderNames();
+
+                        ft.ViewTransactions(SenderAccNo, RecieverAccNo, SortCode, TAmount, RNo, date);
+                        System.Windows.MessageBox.Show("Your Transfer is Successfull", "Success Transfer", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Information);
+
+
+                    }
+                    else
+                    {
+                        System.Windows.Forms.MessageBox.Show("Transfer Aborted", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else if (TAmount <= Limit && TAmount > 0)
                 {
                     SenderTransfer();
                     RecieverTransfer();
+                    GetSenderNames();
 
                     ft.ViewTransactions(SenderAccNo, RecieverAccNo, SortCode, TAmount, RNo, date);
                     System.Windows.MessageBox.Show("Your Transfer is Successfull", "Success Transfer", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Information);
@@ -87,18 +111,44 @@ namespace OOP_Project
                 }
 
             }
+            else if (txtAccountType.Text == "Current Account" && CurrentDeductingam == 0)
+            {
+                DialogResult result = System.Windows.Forms.MessageBox.Show($"Your Account Balance will be {CurrentRemainingBalance}", "Warning", (MessageBoxButtons)MessageBoxButton.OKCancel, (MessageBoxIcon)MessageBoxImage.Information);
+
+                if (result == System.Windows.Forms.DialogResult.OK)
+                {
+
+                    SenderTransfer();
+                    RecieverTransfer();
+                    GetSenderNames();
+
+                    ft.ViewTransactions(SenderAccNo, RecieverAccNo, SortCode, TAmount, RNo, date);
+                    System.Windows.MessageBox.Show("Your Transfer is Successfull", "Success Transfer", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Information);
+
+
+                }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("Withdrawl Aborted", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
             else if (txtAccountType.Text == "Savings Account" && SortCode != 101010)
             {
                 System.Windows.MessageBox.Show("This Transfer cannot be made as it is a Savings Account", "Error", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Information); ;
                 txtRSortCode.Clear();
             }
-            else if (txtAccountType.Text == "Current Account")
+            else if (txtAccountType.Text == "Current Account" && TAmount <= Limit && TAmount > 0)
             {
                 SenderTransfer();
                 RecieverTransfer();
+                GetSenderNames();
 
                 ft.ViewTransactions(SenderAccNo, RecieverAccNo, SortCode, TAmount, RNo, date);
                 System.Windows.MessageBox.Show("Your Transfer is Successfull", "Success Transfer", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Information);
+            }
+            else if(TAmount > Limit)
+            {
+                System.Windows.MessageBox.Show($"The Transfer Limit is {Limit}", "Error", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Warning);
             }
         }
         private void tabWithdraw_Loaded(object sender, RoutedEventArgs e)
@@ -135,7 +185,7 @@ namespace OOP_Project
 
                         txtWAmount.Clear();
                         txtbalw.Text = "";
-                        //cboAccNoW.Text = "";
+                        
                     }
                     else
                     {
@@ -151,7 +201,6 @@ namespace OOP_Project
                     txtWAmount.Clear();
                     txtbalw.Clear();
                     txtName.Clear();
-                    //GetAccNoWithdrawl();
                     GetNamesWithdrawl();
                     
                 }

@@ -57,7 +57,7 @@
                         <ComboBox x:Name="cboAccNoW" HorizontalAlignment="Left" Height="38" Margin="-730,70,0,0" VerticalAlignment="Top" Width="148" FontSize="24" SelectionChanged="cboAccNoW_SelectionChanged"/>
                         <Label Content="Selected Account" HorizontalAlignment="Left" Margin="-730,20,0,0" VerticalAlignment="Top" FontSize="20"/>
                         <Label Content="Withdraw Amount" HorizontalAlignment="Left" Margin="-730,120,0,0" VerticalAlignment="Top" FontSize="20"/>
-                        <TextBox x:Name="txtWAmount" Height="35" VerticalAlignment="Top" Width="149" HorizontalAlignment="Left" Margin="-730,150,0,0"/>
+                        <TextBox x:Name="txtWAmount" Height="35" VerticalAlignment="Top" Width="149" HorizontalAlignment="Left" Margin="-730,150,0,0" FontSize="20"/>
                         <Label Content="Account Owner" HorizontalAlignment="Left" Margin="-500,20,0,0" VerticalAlignment="Top" FontSize="20"/>
                         <TextBox x:Name="txtName" Height="38" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Margin="-500,70,0,0" Width="146" HorizontalAlignment="Left" FontSize="24" Background="White" TextAlignment="Center" IsReadOnly="True"/>
                         <Label Content="Current Balance" HorizontalAlignment="Left" Margin="-500,120,0,0" VerticalAlignment="Top" FontSize="20"/>
@@ -74,7 +74,7 @@
                         <ComboBox x:Name="cboAccNoD" HorizontalAlignment="Left" Height="38" Margin="-730,70,0,0" VerticalAlignment="Top" Width="148" FontSize="24" SelectionChanged="cboAccNoD_SelectionChanged"/>
                         <Label Content="Selected Account" HorizontalAlignment="Left" Margin="-730,20,0,0" VerticalAlignment="Top" FontSize="20"/>
                         <Label Content="Deposit Amount" HorizontalAlignment="Left" Margin="-730,120,0,0" VerticalAlignment="Top" FontSize="20"/>
-                        <TextBox x:Name="txtDAmount" Height="35" VerticalAlignment="Top" Width="149" HorizontalAlignment="Left" Margin="-730,150,0,0"/>
+                        <TextBox x:Name="txtDAmount" Height="35" VerticalAlignment="Top" Width="149" HorizontalAlignment="Left" Margin="-730,150,0,0" FontSize="20"/>
                         <Label Content="Account Owner" HorizontalAlignment="Left" Margin="-500,20,0,0" VerticalAlignment="Top" FontSize="20"/>
                         <TextBox x:Name="txtAccname" Height="38" TextWrapping="Wrap" VerticalAlignment="Top" Margin="-500,70,0,0" Width="146" HorizontalAlignment="Left" FontSize="24" Background="White" TextAlignment="Center" IsReadOnly="True"/>
                         <Label Content="Current Balance" HorizontalAlignment="Left" Margin="-500,120,0,0" VerticalAlignment="Top" FontSize="20"/>
