@@ -28,6 +28,21 @@ namespace DAL
 
             cmd.ExecuteNonQuery();
             dao.CloseCon();
+
+        }
+
+        public void UpdateTransferDetails(decimal bal, decimal am, int accno)
+        {
+            SqlCommand cmd = dao.OpenCon().CreateCommand();
+            cmd.CommandText = "uspUpdateTransfer";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@accno", accno);
+            cmd.Parameters.AddWithValue("@na", bal);
+            cmd.Parameters.AddWithValue("@am", am);
+
+            cmd.ExecuteNonQuery();
+            dao.CloseCon();
         }
     }
 }

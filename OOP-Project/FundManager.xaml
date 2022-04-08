@@ -8,30 +8,30 @@
         Title="FundManager" Height="450" Width="800">
     <Grid>
         <TabControl x:Name="tabControlFunds" HorizontalAlignment="Left" Height="400" Margin="10,10,0,0" VerticalAlignment="Top" Width="774">
-            <TabItem x:Name="tabTransfer" Header="Transfer Funds">
+            <TabItem x:Name="tabTransfer" Header="Transfer Funds" Loaded="tabTransfer_Loaded">
                 <Grid Background="#FFE5E5E5">
                     <DockPanel HorizontalAlignment="Left" Height="372" LastChildFill="False" VerticalAlignment="Top" Width="769" Margin="0,0,0,0">
                         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="372" Stroke="#FF00C4EA" VerticalAlignment="Top" Width="769"/>
 
                         <StackPanel Margin="-730,20,0,269" Width="150" Background="White" HorizontalAlignment="Left">
                             <Label Content="Transfer From:" Height="31" VerticalAlignment="Top"/>
-                            <ComboBox Height="22" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
+                            <ComboBox x:Name="cboFromAccNo" Height="22" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="10,10,0,0" SelectionChanged="cboFromAccNo_SelectionChanged"/>
                         </StackPanel>
                         <StackPanel Width="320" Margin="-750,20,0,269" Background="White">
                             <Label Content="Account Owner" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="20"/>
-                            <TextBox x:Name="txtAccountTransferFrom" Height="38" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Margin="0,0,0,0" Width="146" HorizontalAlignment="Left" FontSize="24" Background="White" TextAlignment="Center" IsReadOnly="True"/>
+                            <TextBox x:Name="txtFromAccName" Height="38" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Margin="0,0,0,0" Width="146" HorizontalAlignment="Left" FontSize="24" Background="White" TextAlignment="Center" IsReadOnly="True"/>
                             <Label Content="Current Balance" HorizontalAlignment="Left" Margin="170,-75,0,0" VerticalAlignment="Top" FontSize="20"/>
-                            <TextBox x:Name="txtBalanceTransferFrom" Height="35" TextWrapping="Wrap" Text="0.0" VerticalAlignment="Top" Margin="0,-35,0,0" Width="146" HorizontalAlignment="Right" FontSize="24" Background="White" TextAlignment="Center" IsReadOnly="True"/>
+                            <TextBox x:Name="txtFromBalance" Height="35" TextWrapping="Wrap" Text="0.0" VerticalAlignment="Top" Margin="0,-35,0,0" Width="146" HorizontalAlignment="Right" FontSize="24" Background="White" TextAlignment="Center" IsReadOnly="True"/>
                         </StackPanel>
                         <StackPanel Width="320" Margin="-750,165,0,128" Background="White">
                             <Label Content="Account Owner" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="20"/>
-                            <TextBox x:Name="txtAccountTransferTo" Height="38" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Margin="0,0,0,0" Width="146" HorizontalAlignment="Left" FontSize="24" Background="White" TextAlignment="Center" IsReadOnly="True"/>
+                            <TextBox x:Name="txtToAccName" Height="38" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Margin="0,0,0,0" Width="146" HorizontalAlignment="Left" FontSize="24" Background="White" TextAlignment="Center" IsReadOnly="True"/>
                             <Label Content="Sort Code" HorizontalAlignment="Left" Margin="200,-75,0,0" VerticalAlignment="Top" FontSize="20" Width="140"/>
-                            <TextBox x:Name="txtBalanceTransferTo" Height="35" TextWrapping="Wrap" Text="0.0" VerticalAlignment="Top" Margin="0,-35,0,0" Width="146" HorizontalAlignment="Right" FontSize="24" Background="White" TextAlignment="Center" IsReadOnly="True"/>
+                            <TextBox x:Name="txtRSortCode" Height="35" TextWrapping="Wrap" Text="0.0" VerticalAlignment="Top" Margin="0,-35,0,0" Width="146" HorizontalAlignment="Right" FontSize="24" Background="White" TextAlignment="Center" IsReadOnly="True"/>
                         </StackPanel>
                         <StackPanel Width="150" Margin="-730,100,0,64" Height="80" Background="White" HorizontalAlignment="Left">
                             <Label Content="Transfer From:" Height="31" VerticalAlignment="Top" Margin="10,0,0,0"/>
-                            <ComboBox HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120"/>
+                            <ComboBox x:Name="cboToAccNo" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cboToAccNo_SelectionChanged"/>
                         </StackPanel>
                         <StackPanel Width="79" Margin="-250,20,0,269" Background="White">
                             <Label Content="Overdraft Limit" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="10"/>
@@ -54,7 +54,7 @@
                 <Grid Background="#FFE5E5E5">
                     <DockPanel Margin="10,10,9.8,10">
                         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="352" Stroke="#FF00C4EA" VerticalAlignment="Top" Width="748"/>
-                        <ComboBox x:Name="cmbAccountWithdraw" HorizontalAlignment="Left" Height="38" Margin="-730,70,0,0" VerticalAlignment="Top" Width="148" FontSize="24"/>
+                        <ComboBox x:Name="cboAccNoW" HorizontalAlignment="Left" Height="38" Margin="-730,70,0,0" VerticalAlignment="Top" Width="148" FontSize="24"/>
                         <Label Content="Selected Account" HorizontalAlignment="Left" Margin="-730,20,0,0" VerticalAlignment="Top" FontSize="20"/>
                         <Label Content="Withdraw Amount" HorizontalAlignment="Left" Margin="-730,120,0,0" VerticalAlignment="Top" FontSize="20"/>
                         <TextBox x:Name="txtWAmount" Height="35" VerticalAlignment="Top" Width="149" HorizontalAlignment="Left" Margin="-730,150,0,0"/>
