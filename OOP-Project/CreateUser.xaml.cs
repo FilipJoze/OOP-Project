@@ -31,80 +31,85 @@ namespace OOP_Project
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-
-            //bool for valid password 
-            bool passwordValid = false;
-
-            //rules for password
-            int minUpper = 1;
-            int minLower;
-            int minLength = 7;
-            string allowedSpecials = "@#/.!";
-            //
-
-            string createuser = txtUsername.Text;
-
-            string createpassword = pbPassword.Password.ToString();
-            char[] characters = createpassword.ToCharArray();
-            //current variables
-            int upper = 0;
-            int character = 0;
-            int length = createpassword.Length;
-            int illegalCharacters = 0;
-
-            //checks the password
-            foreach (char enteredCharacters in characters)
+            if (txtUsername.Text != string.Empty)
             {
-                if (char.IsUpper(enteredCharacters))
+                //bool for valid password 
+                bool passwordValid = false;
+
+                //rules for password
+                int minUpper = 1;
+                int minLength = 7;
+                string allowedSpecials = "@#/.!";
+                //
+
+                string createuser = txtUsername.Text;
+
+                string createpassword = pbPassword.Password.ToString();
+                char[] characters = createpassword.ToCharArray();
+                //current variables
+                int upper = 0;
+                int character = 0;
+                int length = createpassword.Length;
+                int illegalCharacters = 0;
+
+                //checks the password
+                foreach (char enteredCharacters in characters)
                 {
-                    upper = upper + 1;
+                    if (char.IsUpper(enteredCharacters))
+                    {
+                        upper = upper + 1;
+
+                    }
+                    else if (char.IsLower(enteredCharacters))
+                    {
+
+                    }
+                    else if (allowedSpecials.Contains(enteredCharacters.ToString())) //needs double check
+                    {
+                        character = character + 1;
+
+                    }
+                    else
+                    {
+                        illegalCharacters = illegalCharacters + 1;
+
+                    }
 
                 }
-                else if (char.IsLower(enteredCharacters))
+                if (upper < minUpper || length < minLength || illegalCharacters >= 1)
                 {
-
-                }
-                else if (allowedSpecials.Contains(enteredCharacters.ToString())) //needs double check
-                {
-                    character = character + 1;
-
+                    MessageBox.Show("Insufficient Password Criteria", "Re-Enter Password", MessageBoxButton.OK);
+                    passwordValid = false;
                 }
                 else
                 {
-                    illegalCharacters = illegalCharacters + 1;
+                    MessageBox.Show("Password Criteria Met", "Password Choice Good", MessageBoxButton.OK);
+                    //
+                    passwordValid = true;
+                    createpassword = hp.PassHash(pbPassword.Password.ToString()); //encrypts the accepted password under the criterias
+                    cua.CreateUser(txtUsername.Text, createpassword);
+
+                    MessageBox.Show("Admin Created", "Information", MessageBoxButton.OK);
+
+                    this.Close();
 
                 }
-
-            }
-            if (upper < minUpper || length < minLength || illegalCharacters >= 1)
-            {
-                MessageBox.Show("Insufficient Password Criteria", "Re-Enter Password", MessageBoxButton.OK);
-                passwordValid = false;
+                if (pbPasswordCheck.Password.ToString() != "")
+                {
+                    if (passwordValid)
+                    {
+                        txtStatus.Text = "";
+                        this.Close();
+                    }
+                    else
+                    {
+                        txtStatus.Text = "Invalid Password";
+                    }
+                }
             }
             else
             {
-                MessageBox.Show("Password Criteria Met", "Password Choice Good", MessageBoxButton.OK);
-                //
-                passwordValid = true;
-                createpassword = hp.PassHash(pbPassword.Password.ToString()); //encrypts the accepted password under the criterias
-                cua.CreateUser(txtUsername.Text, createpassword);
-
-                MessageBox.Show("Admin Created", "Information", MessageBoxButton.OK);
-
-                this.Close();
-
-            }
-            if (pbPasswordCheck.Password.ToString() != "")
-            {
-                if (passwordValid)
-                {
-                    txtStatus.Text = "";
-                    this.Close();
-                }
-                else
-                {
-                    txtStatus.Text = "Invalid Password";
-                }
+                MessageBox.Show("Username Required", "Error 401", MessageBoxButton.OK,MessageBoxImage.Error);
             }
         }
 

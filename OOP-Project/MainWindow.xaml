@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OOP_Project"
         mc:Ignorable="d"
-        Title="UserLogin" Height="550" Width="350">
+        Title="UserLogin" Height="550" Width="350" Closed="windowUserLogin_Closed">
     <Grid Loaded="Grid_Loaded">
         <Label x:Name="lblUsername" Content="Username" HorizontalAlignment="Left" Margin="30,111,0,0" VerticalAlignment="Top" FontSize="24"/>
         <Label x:Name="lblPassword" Content="Password" HorizontalAlignment="Left" Margin="30,203,0,0" VerticalAlignment="Top" FontSize="24"/>

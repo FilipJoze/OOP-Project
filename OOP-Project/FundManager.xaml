@@ -57,9 +57,9 @@
                         <ComboBox x:Name="cboAccNoW" HorizontalAlignment="Left" Height="38" Margin="-730,70,0,0" VerticalAlignment="Top" Width="148" FontSize="24" SelectionChanged="cboAccNoW_SelectionChanged"/>
                         <Label Content="Selected Account" HorizontalAlignment="Left" Margin="-730,20,0,0" VerticalAlignment="Top" FontSize="20"/>
                         <Label Content="Withdraw Amount" HorizontalAlignment="Left" Margin="-730,120,0,0" VerticalAlignment="Top" FontSize="20"/>
-                        <TextBox x:Name="txtWAmount" Height="35" VerticalAlignment="Top" Width="149" HorizontalAlignment="Left" Margin="-730,150,0,0" FontSize="20"/>
+                        <TextBox x:Name="txtWAmount" Height="35" VerticalAlignment="Top" Width="149" HorizontalAlignment="Left" Margin="-730,150,0,0" FontSize="20" TextAlignment="Center"/>
                         <Label Content="Account Owner" HorizontalAlignment="Left" Margin="-500,20,0,0" VerticalAlignment="Top" FontSize="20"/>
-                        <TextBox x:Name="txtName" Height="38" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Margin="-500,70,0,0" Width="146" HorizontalAlignment="Left" FontSize="24" Background="White" TextAlignment="Center" IsReadOnly="True"/>
+                        <TextBox x:Name="txtName" Height="38" TextWrapping="Wrap" VerticalAlignment="Top" Margin="-500,70,0,0" Width="146" HorizontalAlignment="Left" FontSize="24" Background="White" TextAlignment="Center" IsReadOnly="True"/>
                         <Label Content="Current Balance" HorizontalAlignment="Left" Margin="-500,120,0,0" VerticalAlignment="Top" FontSize="20"/>
                         <TextBox x:Name="txtbalw" Height="35" TextWrapping="Wrap" Text="0.0" VerticalAlignment="Top" Margin="-500,150,0,0" Width="146" HorizontalAlignment="Left" FontSize="24" Background="White" TextAlignment="Center" IsReadOnly="True"/>
                         <Button x:Name="btnWithdraw" Content="Withdraw Funds" Margin="-730,90,0,0" Width="130" Height="40" FontSize="18" Cursor="Hand" Background="#FF00C4EA" BorderBrush="Black" HorizontalAlignment="Left" Click="btnWithdraw_Click" />
@@ -74,7 +74,7 @@
                         <ComboBox x:Name="cboAccNoD" HorizontalAlignment="Left" Height="38" Margin="-730,70,0,0" VerticalAlignment="Top" Width="148" FontSize="24" SelectionChanged="cboAccNoD_SelectionChanged"/>
                         <Label Content="Selected Account" HorizontalAlignment="Left" Margin="-730,20,0,0" VerticalAlignment="Top" FontSize="20"/>
                         <Label Content="Deposit Amount" HorizontalAlignment="Left" Margin="-730,120,0,0" VerticalAlignment="Top" FontSize="20"/>
-                        <TextBox x:Name="txtDAmount" Height="35" VerticalAlignment="Top" Width="149" HorizontalAlignment="Left" Margin="-730,150,0,0" FontSize="20"/>
+                        <TextBox x:Name="txtDAmount" Height="35" VerticalAlignment="Top" Width="149" HorizontalAlignment="Left" Margin="-730,150,0,0" FontSize="20" TextAlignment="Center"/>
                         <Label Content="Account Owner" HorizontalAlignment="Left" Margin="-500,20,0,0" VerticalAlignment="Top" FontSize="20"/>
                         <TextBox x:Name="txtAccname" Height="38" TextWrapping="Wrap" VerticalAlignment="Top" Margin="-500,70,0,0" Width="146" HorizontalAlignment="Left" FontSize="24" Background="White" TextAlignment="Center" IsReadOnly="True"/>
                         <Label Content="Current Balance" HorizontalAlignment="Left" Margin="-500,120,0,0" VerticalAlignment="Top" FontSize="20"/>
@@ -86,10 +86,14 @@
             </TabItem>
             <TabItem x:Name="tabHistory" Header="Transaction History" Loaded="tabHistory_Loaded">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="dgvHistory" HorizontalAlignment="Left" Height="352" Margin="10,10,0,0" VerticalAlignment="Top" Width="651"/>
-                    <Button x:Name="btnRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="666,10,0,0" VerticalAlignment="Top" Width="93" Height="40" Cursor="Hand" Background="#FF00C4EA" Foreground="Black" Click="btnRefresh_Click"/>
-                    <TextBox x:Name="txtSearch" Width="100" Height="24" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="665,69,3.8,0" MaxLength="6" TextChanged="txtSearch_TextChanged"/>
-                    <Label Content="Search History" HorizontalAlignment="Left" Margin="670,47,0,0" VerticalAlignment="Top"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="146*"/>
+                        <ColumnDefinition Width="623*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="dgvHistory" HorizontalAlignment="Left" Height="352" Margin="10,10,0,0" VerticalAlignment="Top" Width="651" Grid.ColumnSpan="2"/>
+                    <Button x:Name="btnRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="519.7,10,0,0" VerticalAlignment="Top" Width="93" Height="40" Cursor="Hand" Background="#FF00C4EA" Foreground="Black" Click="btnRefresh_Click" Grid.Column="1"/>
+                    <TextBox x:Name="txtSearch" Width="100" Height="24" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="518.7,69,3.8,0" MaxLength="6" TextChanged="txtSearch_TextChanged" BorderBrush="#FF00C4EA" BorderThickness="2" Grid.Column="1"/>
+                    <Label Content="Search History" HorizontalAlignment="Left" Margin="523.7,47,0,0" VerticalAlignment="Top" Grid.Column="1"/>
 
                 </Grid>
             </TabItem>

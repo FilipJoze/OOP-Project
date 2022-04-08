@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OOP_Project"
         mc:Ignorable="d"
-        Title="ActionMenu" Height="450" Width="800">
+        Title="ActionMenu" Height="450" Width="800" Closed="Window_Closed">
     <Grid Loaded="Grid_Loaded">
         <StackPanel x:Name="ActionStackPanel" HorizontalAlignment="Left" Height="40" Margin="0,0,-0.4,0" VerticalAlignment="Top" FlowDirection="LeftToRight" Width="794" Background="#FF00D6FF" OpacityMask="#FF00FAFF">
             <Menu x:Name="ActionMenu1" Height="40" Margin="0,0,-0.4,0" OpacityMask="#7F000000" BorderBrush="Black">
@@ -15,7 +15,7 @@
                     <Button x:Name="btnEditAccount" Content="Edit Account" Height="30" Width="auto" Cursor="Hand"  Background="#00DDDDDD" BorderBrush="#00707070" Click="btnEditAccount_Click"/>
                     <Button x:Name="btnLogOut" Content="Log Out" Height="25" Width="auto" Cursor="Hand" Background="#00DDDDDD" BorderBrush="#00707070" Click="btnLogOut_Click"/>
                 </MenuItem>
-                
+
                 <MenuItem Header="Services" Height="40" Width="90" Background="#FF00C4EA" Cursor="Hand" BorderBrush="#00000000" Foreground="Black">
 
                     <Button x:Name="btnTransferFunds" Content="Transfer Funds" Height="25" Width="auto" Cursor="Hand" Background="#00DDDDDD" BorderBrush="#00707070" Click="btnTransferFunds_Click"/>
@@ -25,7 +25,7 @@
                     <Button x:Name="btnSerialiseXML" Content="Serialise into XML" Height="25" Width="auto" Cursor="Hand" Background="#00DDDDDD" BorderBrush="#00707070" Click="btnSerialiseXML_Click"/>
 
                 </MenuItem>
-                
+
                 <!--<MenuItem Header="Settings" Height="40" Width="90" Background="#FF00C4EA" Click="MenuItem_Click_1" Cursor="Hand" BorderBrush="#00000000" Foreground="Black">
                     <Button x:Name="btnSettings" Content="Settings" Height="25" Width="auto" Click="SettingsButton_Click" Background="#00DDDDDD" BorderBrush="#00707070"/>
                     <Button x:Name="btnHelp" Content="Help" Height="25" Width="auto" Click="SettingsButton_Click" Background="#00DDDDDD" BorderBrush="#00707070"/>
@@ -37,7 +37,8 @@
         <StackPanel>
             <StackPanel Margin="688,0,-0.4,0" Height="408">
                 <Button x:Name="btnRefresh" Content="Refresh" HorizontalAlignment="Center" Margin="0,45,0,0" VerticalAlignment="Top" Width="93" Height="40" Cursor="Hand" Background="#FF00C4EA" Click="btnRefresh_Click"/>
-                <TextBox x:Name="txtSearch" Width="100" Height="24" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" TextChanged="txtSearch_TextChanged" MaxLength="6" TextAlignment="Center"/>
+                <TextBox x:Name="txtSearch" Width="86" Height="23" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,10,9.6,0" TextChanged="txtSearch_TextChanged" MaxLength="6" TextAlignment="Center" BorderThickness="2" BorderBrush="#FF00C4EA"/>
+                <Label Content="Search via ID" Margin="10,0,-0.4,0"/>
             </StackPanel>
 
         </StackPanel>

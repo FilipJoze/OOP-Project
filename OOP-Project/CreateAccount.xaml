@@ -8,7 +8,7 @@
         Title="CreateAccount" Height="547.2" Width="565">
     <Grid Loaded="Grid_Loaded">
         
-        <DockPanel Margin="335,290,23.4,61.4">
+        <DockPanel Margin="335,290,10.4,61.6">
             <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="150" Margin="0,0,0,0" Stroke="#FF00C4EA" VerticalAlignment="Top" Width="200"/>
             <TextBox x:Name="txtBalance" HorizontalAlignment="Left" Height="38" Margin="-175,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" FontSize="24"/>
             <Label Content="Initial Balance" HorizontalAlignment="Left" Margin="-175,20,0,0" VerticalAlignment="Top" FontSize="24"/>

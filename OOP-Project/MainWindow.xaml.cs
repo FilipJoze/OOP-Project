@@ -44,47 +44,55 @@ namespace OOP_Project
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
 
-            //if (txtCaptchaCheck.Text == txtCaptcha.Text)
-            //{
-            //    string user = txtUsername.Text;
-            //    //string pass = hp.PassHash(pbPassword.Password.ToString()); //encryption --already commented
-            //    string pass = pbPassword.Password.ToString();
+            if (txtUsername.Text != string.Empty && txtCaptchaCheck.Text != string.Empty && 
+                pbPassword.Password.ToString() != string.Empty)
+            {
 
-            //    pass = hp.PassHash(pbPassword.Password.ToString());
+                if (txtCaptchaCheck.Text == txtCaptcha.Text)
+                {
+                    string user = txtUsername.Text;
+                    string pass = pbPassword.Password.ToString();
 
-            //    bool readSuccess = lc.CheckUserLogin(user, pass);
+                    pass = hp.PassHash(pbPassword.Password.ToString());
 
-            //    if (readSuccess)
-            //    {
-            //        ActionMenu am = new ActionMenu();
-            //        am.Owner = this;
-            //        am.Show();
-            //        this.Hide();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Incorrect Details", "Login Error", MessageBoxButton.OK);
-            //        pbPassword.Clear();
-            //        txtCaptcha.Clear();
-            //        txtCaptchaCheck.Clear();
-            //        int captchaCode = r.Next(100000, 999999);
-            //        txtCaptcha.Text = captchaCode.ToString();
-            //    }
-            //}else
-            //{
-            //    MessageBox.Show("Incorrect Details", "Login Error", MessageBoxButton.OK);
-            //    pbPassword.Clear();
-            //    txtCaptcha.Clear();
-            //    txtCaptchaCheck.Clear();
-            //    int captchaCode = r.Next(100000, 999999);
-            //    txtCaptcha.Text = captchaCode.ToString();
-            //}
+                    bool readSuccess = lc.CheckUserLogin(user, pass);
 
+                    if (readSuccess)
+                    {
+                        ActionMenu am = new ActionMenu();
+                        am.Owner = this;
+                        am.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Incorrect Details", "Login Error", MessageBoxButton.OK,MessageBoxImage.Warning);
+                        pbPassword.Clear();
+                        txtCaptcha.Clear();
+                        txtCaptchaCheck.Clear();
+                        int captchaCode = r.Next(100000, 999999);
+                        txtCaptcha.Text = captchaCode.ToString();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect Details", "Login Error", MessageBoxButton.OK,MessageBoxImage.Error);
+                    pbPassword.Clear();
+                    txtCaptcha.Clear();
+                    txtCaptchaCheck.Clear();
+                    int captchaCode = r.Next(100000, 999999);
+                    txtCaptcha.Text = captchaCode.ToString();
+                }
+            }
+            else
+            {
+                MessageBox.Show("All fields are mandatory", "Login Error", MessageBoxButton.OK,MessageBoxImage.Error);
+            }
 
-            ActionMenu am = new ActionMenu();
-            am.Owner = this;
-            am.Show();
-            this.Hide();
+            //ActionMenu am = new ActionMenu();
+            //am.Owner = this;
+            //am.Show();
+            //this.Hide();
         }
 
         private void btnCreateAccount_Click(object sender, RoutedEventArgs e)
@@ -106,6 +114,9 @@ namespace OOP_Project
 
         }
 
-
+        private void windowUserLogin_Closed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

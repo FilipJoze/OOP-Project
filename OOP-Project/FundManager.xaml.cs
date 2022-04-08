@@ -116,7 +116,7 @@ namespace OOP_Project
 
 
                             }
-                            else if(TAmount == 0)
+                            else if(TAmount <= 0)
                             {
                                 System.Windows.MessageBox.Show($"Amount should be greater than 0", "Error", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Warning);
                             }
@@ -144,7 +144,7 @@ namespace OOP_Project
                             }
                             else
                             {
-                                System.Windows.Forms.MessageBox.Show("Withdrawl Aborted", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                System.Windows.Forms.MessageBox.Show("Withdrawal Aborted", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
                         else if (txtAccountType.Text == "Savings Account" && SortCode != 101010)

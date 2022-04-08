@@ -93,7 +93,7 @@ namespace OOP_Project
         {
             UserLogin ul = new UserLogin();
             ul.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -169,6 +169,11 @@ namespace OOP_Project
         {
             Serialiser sr = new Serialiser();
             sr.ShowDialog();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

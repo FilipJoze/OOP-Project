@@ -9,14 +9,17 @@
     <Grid>
         <DockPanel Margin="10,10,10.2,29">
             <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="319" Margin="0,0,0,0" Stroke="#FF00C4EA" VerticalAlignment="Top" Width="200"/>
-            <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="38" Margin="-170,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" FontSize="24"/>
-            <Label Content="Username" HorizontalAlignment="Left" Margin="-175,20,0,0" VerticalAlignment="Top" FontSize="20"/>
-            <Label Content="Password" HorizontalAlignment="Left" Margin="-175,120,0,0" VerticalAlignment="Top" FontSize="20"/>
-            <PasswordBox x:Name="pbPassword" Height="35" VerticalAlignment="Top" Width="149" Margin="-190,150,0,0"/>
-            <Label Content="Re-enter Password" HorizontalAlignment="Left" Margin="-175,200,0,0" VerticalAlignment="Top" FontSize="20"/>
-            <PasswordBox x:Name="pbPasswordCheck" Height="35" VerticalAlignment="Top" Width="149" Margin="-190,230,0,0" TextInput="pbPasswordCheck_TextInput" DataContextChanged="pbPasswordCheck_DataContextChanged" PasswordChanged="pbPasswordCheck_PasswordChanged"/>
-            <CheckBox x:Name="cbPasswordCheck" Content="Password Matches" HorizontalAlignment="Left" Margin="-150,270,0,0" VerticalAlignment="Top" Height="23" Width="122" Checked="cbPasswordCheck_Checked"/>
+            <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="38" Margin="-170,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" FontSize="24"/>
+            <Label Content="Username" HorizontalAlignment="Left" Margin="-175,8,0,0" VerticalAlignment="Top" FontSize="20"/>
+            <Label Content="Password" HorizontalAlignment="Left" Margin="-175,90,0,0" VerticalAlignment="Top" FontSize="20" Height="34"/>
+            <PasswordBox x:Name="pbPassword" Height="35" VerticalAlignment="Top" Width="150" Margin="-190,127,0,0" FontSize="24"/>
+            <Label Content="Re-enter Password" HorizontalAlignment="Left" Margin="-175,163,0,0" VerticalAlignment="Top" FontSize="20"/>
+            <PasswordBox x:Name="pbPasswordCheck" Height="35" VerticalAlignment="Top" Width="150" Margin="-190,204,0,0" TextInput="pbPasswordCheck_TextInput" DataContextChanged="pbPasswordCheck_DataContextChanged" PasswordChanged="pbPasswordCheck_PasswordChanged" FontSize="24"/>
+            <CheckBox x:Name="cbPasswordCheck" Content="Password Matches" HorizontalAlignment="Left" Margin="-150,302,0,0" VerticalAlignment="Top" Height="23" Width="122" Checked="cbPasswordCheck_Checked" FontWeight="Bold"/>
             <TextBlock x:Name="txtStatus" Text="" Width="193" Margin="-200,293,0,61.8" TextAlignment="Center"/>
+            <Label Content="Password Requirements:" Height="26" VerticalAlignment="Top" Width="146" Margin="-180,233,0,0" FontWeight="Bold" />
+            <Label Content="1 Uppercase Character&#xA;1 Special Character(@#/!)&#xD;&#xA;Minimum Length (7)" Height="73" VerticalAlignment="Top" Width="148" Margin="-180,246,0,0" />
+        
         </DockPanel>
         <Button x:Name="btnCreate" Content="Create User" Margin="10,341,10,10" FontSize="30" Cursor="Hand" Background="#FF00C4EA" BorderBrush="Black" Click="btnCreate_Click"/>
 
