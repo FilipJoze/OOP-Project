@@ -36,24 +36,31 @@ namespace OOP_Project
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+            if (txtAccNumber.Text != string.Empty && txtEmail.Text != string.Empty && txtPhone.Text != string.Empty && txtAdd1.Text != string.Empty &&
+                txtAdd2.Text != string.Empty && txtCity.Text != string.Empty && cmbCounty.SelectedItem != null)
+            {
+                string email = txtEmail.Text;
+                string ph = txtPhone.Text;
+                string add1 = txtAdd1.Text;
+                string add2 = txtAdd2.Text;
+                string city = txtCity.Text;
+                string county = cmbCounty.SelectedItem.ToString();
+                int AccountNo = int.Parse(txtAccNumber.Text);
 
-            string email = txtEmail.Text;
-            string ph = txtPhone.Text;
-            string add1 = txtAdd1.Text;
-            string add2 = txtAdd2.Text;
-            string city = txtCity.Text;
-            string county = cmbCounty.SelectedItem.ToString();
-            int AccountNo = int.Parse(txtAccNumber.Text);
+                up.UpdateCustomer(email, ph, add1, add2, city, county, AccountNo);
 
-            up.UpdateCustomer(email, ph, add1, add2, city, county, AccountNo);
+                MessageBox.Show("Data Updated Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
-            MessageBox.Show("Data Updated Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-
-            txtEmail.Clear();
-            txtPhone.Clear();
-            txtAdd1.Clear();
-            txtAdd2.Clear();
-            txtCity.Clear();
+                txtEmail.Clear();
+                txtPhone.Clear();
+                txtAdd1.Clear();
+                txtAdd2.Clear();
+                txtCity.Clear();
+            }
+            else
+            {
+                MessageBox.Show("All fields are mandatory", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
 
         }
 

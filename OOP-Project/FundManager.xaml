@@ -84,10 +84,13 @@
                     </DockPanel>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="tabHistory" Header="Transaction History">
+            <TabItem x:Name="tabHistory" Header="Transaction History" Loaded="tabHistory_Loaded">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid HorizontalAlignment="Left" Height="352" Margin="10,10,0,0" VerticalAlignment="Top" Width="651"/>
-                    <Button x:Name="btnRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="666,10,0,0" VerticalAlignment="Top" Width="93" Height="40" Cursor="Hand" Background="#FF00C4EA" Foreground="Black"/>
+                    <DataGrid x:Name="dgvHistory" HorizontalAlignment="Left" Height="352" Margin="10,10,0,0" VerticalAlignment="Top" Width="651"/>
+                    <Button x:Name="btnRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="666,10,0,0" VerticalAlignment="Top" Width="93" Height="40" Cursor="Hand" Background="#FF00C4EA" Foreground="Black" Click="btnRefresh_Click"/>
+                    <TextBox x:Name="txtSearch" Width="100" Height="24" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="665,69,3.8,0" MaxLength="6" TextChanged="txtSearch_TextChanged"/>
+                    <Label Content="Search History" HorizontalAlignment="Left" Margin="670,47,0,0" VerticalAlignment="Top"/>
+
                 </Grid>
             </TabItem>
         </TabControl>

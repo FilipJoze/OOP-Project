@@ -32,8 +32,11 @@ namespace OOP_Project
 
         DAO dao = new DAO();
         SqlDataReader dr;
+        SqlDataAdapter da = new SqlDataAdapter();
+        DataTable dt = new DataTable();
         Deposit_Withdraw dw = new Deposit_Withdraw();
         FundTransfer ft = new FundTransfer();
+        System.Windows.Controls.DataGrid dgv = new System.Windows.Controls.DataGrid();
 
         private void tabTransfer_Loaded(object sender, RoutedEventArgs e)
         {
@@ -51,104 +54,133 @@ namespace OOP_Project
         }
         private void btnTransfer_Click(object sender, RoutedEventArgs e)
         {
-            int SenderAccNo = int.Parse(cboFromAccNo.SelectedItem.ToString());
-            decimal SBalance = decimal.Parse(txtFromBalance.Text);
-            decimal ODLimit = decimal.Parse(txtOverdraftLimit.Text);
-            decimal TAmount = decimal.Parse(txtTransferAmount.Text);
 
-            int RecieverAccNo = int.Parse(cboToAccNo.SelectedItem.ToString());
-            int SortCode = int.Parse(txtRSortCode.Text);
-
-
-            string date = DateTime.Now.ToString();
-
-            Random r = new Random();
-            int RNo = r.Next(1000, 1000000);
-            txtRSortCode.Text = RNo.ToString();
-
-            decimal Limit = SBalance + ODLimit;
-
-            decimal SavingsDeductingam = SBalance - TAmount;
-            decimal CurrentDeductingam = Limit - TAmount;
-            decimal CurrentRemainingBalance = SBalance - Limit;
-            if (txtAccountType.Text == "Savings Account" && SortCode == 101010)
+            if (cboFromAccNo.SelectedItem != cboToAccNo.SelectedItem)
             {
-                if(txtAccountType.Text == "Savings Account" && SavingsDeductingam == 0)
+                if (int.TryParse(txtTransferAmount.Text, out int test) == true)
                 {
-                    DialogResult result = System.Windows.Forms.MessageBox.Show("Your Account Balance will be 0", "Warning", (MessageBoxButtons)MessageBoxButton.OKCancel, (MessageBoxIcon)MessageBoxImage.Information);
-
-                    if (result == System.Windows.Forms.DialogResult.OK)
+                    if(cboFromAccNo.SelectedItem != null && cboToAccNo.SelectedItem != null && txtFromBalance.Text != null
+                        && txtTransferAmount.Text != null)
                     {
+                        int SenderAccNo = int.Parse(cboFromAccNo.SelectedItem.ToString());
+                        decimal SBalance = decimal.Parse(txtFromBalance.Text);
+                        decimal ODLimit = decimal.Parse(txtOverdraftLimit.Text);
+                        decimal TAmount = decimal.Parse(txtTransferAmount.Text);
 
-                        SenderTransfer();
-                        RecieverTransfer();
-                        GetSenderNames();
-
-                        ft.ViewTransactions(SenderAccNo, RecieverAccNo, SortCode, TAmount, RNo, date);
-                        System.Windows.MessageBox.Show("Your Transfer is Successfull", "Success Transfer", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Information);
+                        int RecieverAccNo = int.Parse(cboToAccNo.SelectedItem.ToString());
+                        int SortCode = int.Parse(txtRSortCode.Text);
 
 
+                        string date = DateTime.Now.ToString();
+
+                        Random r = new Random();
+                        int RNo = r.Next(1000, 1000000);
+
+                        decimal Limit = SBalance + ODLimit;
+
+                        decimal SavingsDeductingam = SBalance - TAmount;
+                        decimal CurrentDeductingam = Limit - TAmount;
+                        decimal CurrentRemainingBalance = SBalance - Limit;
+
+                        if (txtAccountType.Text == "Savings Account" && SortCode == 101010)
+                        {
+                            if (txtAccountType.Text == "Savings Account" && SavingsDeductingam == 0)
+                            {
+                                DialogResult result = System.Windows.Forms.MessageBox.Show("Your Account Balance will be 0", "Warning", (MessageBoxButtons)MessageBoxButton.OKCancel, (MessageBoxIcon)MessageBoxImage.Information);
+
+                                if (result == System.Windows.Forms.DialogResult.OK)
+                                {
+
+                                    SenderTransfer();
+                                    RecieverTransfer();
+                                    GetSenderNames();
+
+                                    ft.ViewTransactions(SenderAccNo, RecieverAccNo, SortCode, TAmount, RNo, date);
+                                    System.Windows.MessageBox.Show("Your Transfer is Successfull", "Success Transfer", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Information);
+
+
+                                }
+                                else
+                                {
+                                    System.Windows.Forms.MessageBox.Show("Transfer Aborted", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                            else if (TAmount <= Limit && TAmount > 0)
+                            {
+                                SenderTransfer();
+                                RecieverTransfer();
+                                GetSenderNames();
+
+                                ft.ViewTransactions(SenderAccNo, RecieverAccNo, SortCode, TAmount, RNo, date);
+                                System.Windows.MessageBox.Show("Your Transfer is Successfull", "Success Transfer", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Information);
+
+
+                            }
+                            else if(TAmount == 0)
+                            {
+                                System.Windows.MessageBox.Show($"Amount should be greater than 0", "Error", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Warning);
+                            }
+                            else
+                            {
+                                System.Windows.MessageBox.Show($"The Transfer Limit is {Limit}", "Error", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Warning);
+                            }
+
+                        }
+                        else if (txtAccountType.Text == "Current Account" && CurrentDeductingam == 0)
+                        {
+                            DialogResult result = System.Windows.Forms.MessageBox.Show($"Your Account Balance will be {CurrentRemainingBalance}", "Warning", (MessageBoxButtons)MessageBoxButton.OKCancel, (MessageBoxIcon)MessageBoxImage.Information);
+
+                            if (result == System.Windows.Forms.DialogResult.OK)
+                            {
+
+                                SenderTransfer();
+                                RecieverTransfer();
+                                GetSenderNames();
+
+                                ft.ViewTransactions(SenderAccNo, RecieverAccNo, SortCode, TAmount, RNo, date);
+                                System.Windows.MessageBox.Show("Your Transfer is Successfull", "Success Transfer", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Information);
+
+
+                            }
+                            else
+                            {
+                                System.Windows.Forms.MessageBox.Show("Withdrawl Aborted", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                        else if (txtAccountType.Text == "Savings Account" && SortCode != 101010)
+                        {
+                            System.Windows.MessageBox.Show("This Transfer cannot be made as it is a Savings Account", "Error", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Information); ;
+                            txtRSortCode.Clear();
+                        }
+                        else if (txtAccountType.Text == "Current Account" && TAmount <= Limit && TAmount > 0)
+                        {
+                            SenderTransfer();
+                            RecieverTransfer();
+                            GetSenderNames();
+
+                            ft.ViewTransactions(SenderAccNo, RecieverAccNo, SortCode, TAmount, RNo, date);
+                            System.Windows.MessageBox.Show("Your Transfer is Successfull", "Success Transfer", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Information);
+                        }
+                        else if (TAmount > Limit)
+                        {
+                            System.Windows.MessageBox.Show($"The Transfer Limit is {Limit}", "Error", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Warning);
+                        }
                     }
                     else
                     {
-                        System.Windows.Forms.MessageBox.Show("Transfer Aborted", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        System.Windows.MessageBox.Show("All fields are mandatory!", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     }
                 }
-                else if (TAmount <= Limit && TAmount > 0)
-                {
-                    SenderTransfer();
-                    RecieverTransfer();
-                    GetSenderNames();
-
-                    ft.ViewTransactions(SenderAccNo, RecieverAccNo, SortCode, TAmount, RNo, date);
-                    System.Windows.MessageBox.Show("Your Transfer is Successfull", "Success Transfer", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Information);
-
-
-                }
                 else
                 {
-                    System.Windows.MessageBox.Show($"The Transfer Limit is {Limit}", "Error", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Warning);
-                }
-
-            }
-            else if (txtAccountType.Text == "Current Account" && CurrentDeductingam == 0)
-            {
-                DialogResult result = System.Windows.Forms.MessageBox.Show($"Your Account Balance will be {CurrentRemainingBalance}", "Warning", (MessageBoxButtons)MessageBoxButton.OKCancel, (MessageBoxIcon)MessageBoxImage.Information);
-
-                if (result == System.Windows.Forms.DialogResult.OK)
-                {
-
-                    SenderTransfer();
-                    RecieverTransfer();
-                    GetSenderNames();
-
-                    ft.ViewTransactions(SenderAccNo, RecieverAccNo, SortCode, TAmount, RNo, date);
-                    System.Windows.MessageBox.Show("Your Transfer is Successfull", "Success Transfer", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Information);
-
-
-                }
-                else
-                {
-                    System.Windows.Forms.MessageBox.Show("Withdrawl Aborted", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    System.Windows.MessageBox.Show("Invalid Format", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                   
                 }
             }
-            else if (txtAccountType.Text == "Savings Account" && SortCode != 101010)
+            else
             {
-                System.Windows.MessageBox.Show("This Transfer cannot be made as it is a Savings Account", "Error", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Information); ;
-                txtRSortCode.Clear();
-            }
-            else if (txtAccountType.Text == "Current Account" && TAmount <= Limit && TAmount > 0)
-            {
-                SenderTransfer();
-                RecieverTransfer();
-                GetSenderNames();
-
-                ft.ViewTransactions(SenderAccNo, RecieverAccNo, SortCode, TAmount, RNo, date);
-                System.Windows.MessageBox.Show("Your Transfer is Successfull", "Success Transfer", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Information);
-            }
-            else if(TAmount > Limit)
-            {
-                System.Windows.MessageBox.Show($"The Transfer Limit is {Limit}", "Error", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Warning);
+                System.Windows.MessageBox.Show("Cannot transfer to yourself", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                
             }
         }
         private void tabWithdraw_Loaded(object sender, RoutedEventArgs e)
@@ -165,51 +197,66 @@ namespace OOP_Project
         // This Code is for Withdraw Funds
         private void btnWithdraw_Click(object sender, RoutedEventArgs e)
         {
-            int accno = int.Parse(cboAccNoW.SelectedItem.ToString());
-            decimal WAmount = decimal.Parse(txtWAmount.Text);
-            decimal bal = decimal.Parse(txtbalw.Text);
-            decimal newamount = (bal - WAmount) * 100;
+            
 
-            if (WAmount <= bal)
+            if (decimal.TryParse(txtWAmount.Text, out decimal test) == true && cboAccNoW.SelectedItem != null)
             {
-                if (newamount == 0)
+                int accno = int.Parse(cboAccNoW.SelectedItem.ToString());
+                decimal WAmount = decimal.Parse(txtWAmount.Text);
+                decimal bal = decimal.Parse(txtbalw.Text);
+                decimal newamount = (bal - WAmount) * 100;
+
+                if (WAmount != 0 && WAmount > 0)
                 {
-
-                    DialogResult result = System.Windows.Forms.MessageBox.Show("Your Account Balance will be 0", "Warning", (MessageBoxButtons)MessageBoxButton.OKCancel, (MessageBoxIcon)MessageBoxImage.Information);
-
-                    if (result == System.Windows.Forms.DialogResult.OK)
+                    if (WAmount <= bal)
                     {
+                        if (newamount == 0)
+                        {
 
-                        dw.UpdateDepositDetails(newamount, WAmount, accno);
-                        System.Windows.Forms.MessageBox.Show("Withdrawal Successful", "Success", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+                            DialogResult result = System.Windows.Forms.MessageBox.Show("Your Account Balance will be 0", "Warning", (MessageBoxButtons)MessageBoxButton.OKCancel, (MessageBoxIcon)MessageBoxImage.Information);
 
-                        txtWAmount.Clear();
-                        txtbalw.Text = "";
-                        
+                            if (result == System.Windows.Forms.DialogResult.OK)
+                            {
+
+                                dw.UpdateDepositDetails(newamount, WAmount, accno);
+                                System.Windows.Forms.MessageBox.Show("Withdrawal Successful", "Success", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+
+                                txtWAmount.Clear();
+                                txtbalw.Text = "";
+
+                            }
+                            else
+                            {
+                                System.Windows.Forms.MessageBox.Show("Withdrawl Aborted", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+
+                        }
+                        else if (newamount != 0)
+                        {
+                            dw.UpdateDepositDetails(newamount, WAmount, accno);
+                            System.Windows.Forms.MessageBox.Show("Withdrawal Successful", "Success", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+
+                            txtWAmount.Clear();
+                            txtbalw.Clear();
+                            txtName.Clear();
+                            GetNamesWithdrawl();
+
+                        }
                     }
                     else
                     {
-                        System.Windows.Forms.MessageBox.Show("Withdrawl Aborted", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        System.Windows.MessageBox.Show($"Withdrawal Amount cannot excced your balance: {bal} \nPlease Try Again!", "Error", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Error);
                     }
-
                 }
-                else if (newamount != 0)
+                else
                 {
-                    dw.UpdateDepositDetails(newamount, WAmount, accno);
-                    System.Windows.Forms.MessageBox.Show("Withdrawal Successful", "Success", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
-
-                    txtWAmount.Clear();
-                    txtbalw.Clear();
-                    txtName.Clear();
-                    GetNamesWithdrawl();
-                    
+                    System.Windows.MessageBox.Show($"Withdrawal Amount should be greater than zero", "Error", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Error);
                 }
             }
             else
             {
-                System.Windows.MessageBox.Show($"Withdrawl Amount cannot excced your balance: {bal} \nPlease Try Again!", "Error", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Error);
+                System.Windows.MessageBox.Show("Invalid Format", "Error", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Error);
             }
-
         }
         
 
@@ -227,24 +274,31 @@ namespace OOP_Project
         private void btnDeposit_Click(object sender, RoutedEventArgs e)
         {
 
-            if (int.TryParse(txtDAmount.Text, out int test) == true)
+            if (decimal.TryParse(txtDAmount.Text, out decimal test) == true && cboAccNoD.SelectedItem != null)
             {
                 int accno = int.Parse(cboAccNoD.SelectedItem.ToString());
                 decimal DAmount = decimal.Parse(txtDAmount.Text);
                 decimal bal = decimal.Parse(txtbal.Text);
                 decimal newamount = (DAmount + bal) * 100;
-                
-                dw.UpdateDepositDetails(newamount, DAmount, accno);
+                if (DAmount > 0)
+                {
 
-                System.Windows.MessageBox.Show("Deposit Successfull", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    dw.UpdateDepositDetails(newamount, DAmount, accno);
 
-                txtDAmount.Clear();
-                GetNamesDeposit();
+                    System.Windows.MessageBox.Show("Deposit Successfull", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    txtDAmount.Clear();
+                    GetNamesDeposit();
+                }
+                else 
+                {
+                    System.Windows.MessageBox.Show("Amount should be greater than zero", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             else
             {
 
-                System.Windows.MessageBox.Show("Try Again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                System.Windows.MessageBox.Show("Invalid or Missing Information", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             
         }
@@ -477,6 +531,73 @@ namespace OOP_Project
             dao.CloseCon();
 
             return bal;
+        }
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            RefreshGrid();
+        }
+
+        private void SearchByID(int search)
+        {
+            da = new SqlDataAdapter();
+            dt = new DataTable();
+            System.Windows.Controls.DataGrid dgv = new System.Windows.Controls.DataGrid();
+
+            SqlCommand cmd = dao.OpenCon().CreateCommand();
+            cmd.CommandText = "uspFetchTransactions";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+
+            cmd.Parameters.AddWithValue("@transactionId", search);
+            dao.OpenCon();
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            dgvHistory.ItemsSource = dt.DefaultView;
+            dao.CloseCon();
+
+
+        }
+
+        private void PopulateGrid()
+        {
+            da = new SqlDataAdapter();
+            dt = new DataTable();
+            System.Windows.Controls.DataGrid dgv = new System.Windows.Controls.DataGrid();
+
+            SqlCommand cmd = dao.OpenCon().CreateCommand();
+            cmd.CommandText = "uspFetchAllTransactions";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+
+            dao.OpenCon();
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            dgvHistory.ItemsSource = dt.DefaultView;
+            dao.CloseCon();
+        }
+
+        private void tabHistory_Loaded(object sender, RoutedEventArgs e)
+        {
+            RefreshGrid();
+        }
+
+        private void RefreshGrid()
+        {
+            if (txtSearch.Text == "")
+            {
+                PopulateGrid();
+            }
+            int search = 1;
+            if (int.TryParse(txtSearch.Text, out search))
+            {
+                SearchByID(search);
+            }
         }
 
         //private void cboAccNoW_SelectionChanged_1(object sender, SelectionChangedEventArgs e)

@@ -46,68 +46,73 @@ namespace OOP_Project
 
         private void btnSerialise_Click(object sender, RoutedEventArgs e)
         {
-           
-            int AccNo = int.Parse(cboAccNo.SelectedItem.ToString());
-            string fn = txtfn.Text;
-            string sn = txtsn.Text;
-            string email = txtemail.Text;
-            string ph = txtph.Text;
-            string add1 = txtadd1.Text;
-            string add2 = txtadd2.Text;
-            string city = txtct.Text;
-            string cy = txtcy.Text;
-            string AccType = txtAccType.Text;
-            int SCode = int.Parse(txtSCode.Text);
-            int bal = int.Parse(txtBal.Text);
-            decimal am = decimal.Parse(txtam.Text);
-            decimal ODraft = decimal.Parse(txtODLimit.Text);
+            if (cboAccNo.SelectedItem != null)
+            {
+                int AccNo = int.Parse(cboAccNo.SelectedItem.ToString());
+                string fn = txtfn.Text;
+                string sn = txtsn.Text;
+                string email = txtemail.Text;
+                string ph = txtph.Text;
+                string add1 = txtadd1.Text;
+                string add2 = txtadd2.Text;
+                string city = txtct.Text;
+                string cy = txtcy.Text;
+                string AccType = txtAccType.Text;
+                int SCode = int.Parse(txtSCode.Text);
+                int bal = int.Parse(txtBal.Text);
+                decimal am = decimal.Parse(txtam.Text);
+                decimal ODraft = decimal.Parse(txtODLimit.Text);
 
-            XMLConversion m = new XMLConversion();
+                XMLConversion m = new XMLConversion();
 
-            XmlSerializer serialize;
-            XmlWriter writer;
+                XmlSerializer serialize;
+                XmlWriter writer;
 
-            m.AccNo = AccNo;
-            m.Firstname = fn;
-            m.Surname = sn;
-            m.Email = email;
-            m.Phone = ph;
-            m.Address_1 = add1;
-            m.Address_2 = add2;
-            m.City = city;
-            m.County = cy;
-            m.Acc_type = AccType;
-            m.SortCode = SCode;
-            m.Initial_balance = bal;
-            m.Amount = am;
-            m.overdraft = ODraft;
+                m.AccNo = AccNo;
+                m.Firstname = fn;
+                m.Surname = sn;
+                m.Email = email;
+                m.Phone = ph;
+                m.Address_1 = add1;
+                m.Address_2 = add2;
+                m.City = city;
+                m.County = cy;
+                m.Acc_type = AccType;
+                m.SortCode = SCode;
+                m.Initial_balance = bal;
+                m.Amount = am;
+                m.overdraft = ODraft;
 
-            
-            string filepath = @"C:\Users\Filip\source\repos\OOP-Project\OOP-Project\XML\account-" + AccNo + ".xml";
 
-            serialize = new XmlSerializer(typeof(XMLConversion));
-            writer = XmlWriter.Create(filepath);
-            serialize.Serialize(writer, m);
+                string filepath = @"C:\Users\Filip\source\repos\OOP-Project\OOP-Project\XML\account-" + AccNo + ".xml";
 
-            writer.Close();
+                serialize = new XmlSerializer(typeof(XMLConversion));
+                writer = XmlWriter.Create(filepath);
+                serialize.Serialize(writer, m);
 
-            System.Windows.MessageBox.Show("Serialization Completed Successfully", "Success", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Information);
-          
+                writer.Close();
 
-            txtfn.Text = "";
-            txtsn.Text = "";
-            txtemail.Text = "";
-            txtph.Text = "";
-            txtadd1.Text = "";
-            txtadd2.Text = "";
-            txtct.Text = "";
-            txtcy.Text = "";
-            txtAccType.Text = "";
-            txtSCode.Text = "";
-            txtBal.Text = "";
-            txtam.Text = "";
-            txtODLimit.Text = "";
+                System.Windows.MessageBox.Show("Serialization Completed Successfully", "Success", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Information);
 
+
+                txtfn.Text = "";
+                txtsn.Text = "";
+                txtemail.Text = "";
+                txtph.Text = "";
+                txtadd1.Text = "";
+                txtadd2.Text = "";
+                txtct.Text = "";
+                txtcy.Text = "";
+                txtAccType.Text = "";
+                txtSCode.Text = "";
+                txtBal.Text = "";
+                txtam.Text = "";
+                txtODLimit.Text = "";
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("Please select an account", "Error", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Warning);
+            }
         }
 
         void GetDetails()
