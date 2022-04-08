@@ -72,9 +72,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="2FA.xaml.cs">
-      <DependentUpon>2FA.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ActionMenu.xaml.cs">
       <DependentUpon>ActionMenu.xaml</DependentUpon>
     </Compile>
@@ -96,10 +93,6 @@
     <Compile Include="Serialiser.xaml.cs">
       <DependentUpon>Serialiser.xaml</DependentUpon>
     </Compile>
-    <Page Include="2FA.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ActionMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
