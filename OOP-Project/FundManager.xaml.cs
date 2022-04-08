@@ -135,8 +135,7 @@ namespace OOP_Project
 
                         txtWAmount.Clear();
                         txtbalw.Text = "";
-                        txtbalw.Text = "";
-                        cboAccNoW.Text = "";
+                        //cboAccNoW.Text = "";
                     }
                     else
                     {
@@ -144,15 +143,23 @@ namespace OOP_Project
                     }
 
                 }
+                else if (newamount != 0)
+                {
+                    dw.UpdateDepositDetails(newamount, WAmount, accno);
+                    System.Windows.Forms.MessageBox.Show("Withdrawal Successful", "Success", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+
+                    txtWAmount.Clear();
+                    txtbalw.Clear();
+                    txtName.Clear();
+                    //GetAccNoWithdrawl();
+                    GetNamesWithdrawl();
+                    
+                }
             }
             else
             {
                 System.Windows.MessageBox.Show($"Withdrawl Amount cannot excced your balance: {bal} \nPlease Try Again!", "Error", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Error);
             }
-
-            dw.UpdateDepositDetails(newamount, WAmount, accno);
-
-            System.Windows.MessageBox.Show("Deposit Successfull", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
         }
         
@@ -170,20 +177,26 @@ namespace OOP_Project
         }
         private void btnDeposit_Click(object sender, RoutedEventArgs e)
         {
-            
-            
+
+            if (int.TryParse(txtDAmount.Text, out int test) == true)
+            {
                 int accno = int.Parse(cboAccNoD.SelectedItem.ToString());
                 decimal DAmount = decimal.Parse(txtDAmount.Text);
                 decimal bal = decimal.Parse(txtbal.Text);
                 decimal newamount = (DAmount + bal) * 100;
-
+                
                 dw.UpdateDepositDetails(newamount, DAmount, accno);
 
                 System.Windows.MessageBox.Show("Deposit Successfull", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 txtDAmount.Clear();
-                txtAccname.Clear();
-           
+                GetNamesDeposit();
+            }
+            else
+            {
+
+                System.Windows.MessageBox.Show("Try Again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             
         }
         /******************************************************************************/
@@ -208,7 +221,7 @@ namespace OOP_Project
 
         void GetNamesDeposit()
         {
-            string select = "SELECT * FROM MyCustomer WHERE AccountNo = @accno";
+            string select = "SELECT * FROM Accounts WHERE AccountId = @accno";
             string AcNo = cboAccNoD.SelectedItem.ToString();
 
             SqlCommand cmd = new SqlCommand(select, dao.OpenCon());
@@ -318,7 +331,7 @@ namespace OOP_Project
             txtTransferAmount.Clear();
             txtFromBalance.Clear();
             txtToAccName.Clear();
-            cboToAccNo.Text = "";
+            //cboToAccNo.Text = "";
             txtAccountType.Clear();
             txtRSortCode.Clear();
 
@@ -373,7 +386,7 @@ namespace OOP_Project
         void GetRecieverNames()
         {
             string select = "SELECT * FROM Accounts WHERE AccountId = @accno";
-            string AcNo = cboToAccNo.SelectedItem.ToString();
+            string AcNo = cboToAccNo.SelectedValue.ToString();
 
             SqlCommand cmd = new SqlCommand(select, dao.OpenCon());
             cmd.Parameters.AddWithValue("@accno", AcNo);
@@ -384,7 +397,7 @@ namespace OOP_Project
             {
                 string fn = dr["Firstname"].ToString();
                 string sn = dr["Surname"].ToString();
-                decimal bal = decimal.Parse(dr["InitialBalance"].ToString()) / 100;
+               // decimal bal = decimal.Parse(dr["InitialBalance"].ToString()) / 100;
                 int SCode = int.Parse(dr["SortCode"].ToString());
                 txtToAccName.Text = fn + " " + sn;
                 txtRSortCode.Text = SCode.ToString();
@@ -396,7 +409,7 @@ namespace OOP_Project
         public decimal GetRecieverBalance(decimal bal)
         {
 
-            string select = "SELECT * FROM MyCustomer WHERE AccountNo = @accno";
+            string select = "SELECT * FROM Accounts WHERE AccountId = @accno";
             string AcNo = cboToAccNo.SelectedItem.ToString();
 
             SqlCommand cmd = new SqlCommand(select, dao.OpenCon());
@@ -417,6 +430,9 @@ namespace OOP_Project
             return bal;
         }
 
-       
+        //private void cboAccNoW_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        //{
+
+        //}
     }
 }
